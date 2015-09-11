@@ -1,0 +1,18 @@
+[user]
+    name = Victor Nakoryakov
+    email = nail.xx@gmail.com
+
+[color]
+    diff  = auto
+    status= auto
+    branch= auto
+    interactive = true
+
+[alias]
+    ci = commit
+    di = diff --color-words
+    st = status
+    co = checkout
+    unstage = 'reset HEAD --'
+[push]
+	default = simple

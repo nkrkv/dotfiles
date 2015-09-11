@@ -1,0 +1,6 @@
+
+; Add a new library:
+(component-library "/home/nailxx/gEDA/symbols/wiki")
+
+; Copy all invisible attributes from the symbol library to the schematic:
+(promote-invisible "enabled")

@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+export HISTCONTROL=erasedups # do not keep duplicate lines in bash history
+
+export TERM=xterm
+export HGMERGE=merge   # Use simple merge in mercurial
+export NOSE_REDNOSE=1  # Colorize nosetests output
+export PIP_RESPECT_VIRTUALENV=true  # install python packages in activated virtualenv
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's Ruby bin
+RUBY_BIN=$HOME/.gem/ruby/2.2.0/bin
+if [ -d "$RUBY_BIN" ] ; then
+    PATH="$RUBY_BIN:$PATH"
+fi
+
+# RVM
+PATH="$PATH:$HOME/.rvm/bin"
