@@ -19,7 +19,7 @@ set hidden          " allow moving around and leaving dirty files be
 set laststatus=2    " make sure that status line is always shown as 
                     "   the second last line in the editor window
 set tags=tags       " look for tags only in cwd/tags file
-set foldmethod=marker " fold manually or with markers
+set nofoldenable    " no folding
 set linebreak       " break on word boundaries if word wrap enabled
 set listchars=eol:$,tab:–→,trail:~,extends:>,precedes:<,nbsp:•
 
@@ -32,7 +32,19 @@ if has("gui_running")
     match OverLength /\%109v.*/
 endif
 
-syntax on                   " switch syntax highlighting on
+syntax on  " switch syntax highlighting on
+
+" Vundle init
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
+Plugin 'othree/yajs.vim'      " ES6 plugin
+Plugin 'othree/html5.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'wavded/vim-stylus'
+call vundle#end()             " required
+
 filetype plugin indent on   " enable file type detection, use the default filetype settings
 
 " Tab settings
@@ -66,7 +78,9 @@ autocmd FileType text setlocal textwidth=78
 
 " Enable custom syntax highlight
 augroup filetype
+  au! BufRead,BufNewFile *.xod setfiletype json
   au! BufRead,BufNewFile *.ino setfiletype cpp
+  au! BufRead,BufNewFile *.json5 setfiletype javascript
   au! BufRead,BufNewFile *.pde setfiletype cpp
   au! BufRead,BufNewFile *.proto setfiletype proto
   au! BufRead,BufNewFile SCons* setfiletype python
@@ -78,6 +92,7 @@ augroup end
 " Custom settings for file types
 augroup filetype
   au! FileType javascript set sw=2 sts=2
+  au! FileType json set sw=2 sts=2
 augroup end
 
 " Language settings
@@ -179,7 +194,7 @@ let python_highlight_doctests = 1
 
 " NERDTree
 nmap <leader>n :NERDTree<cr>
-let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '\.aux$', '\.pdf$', '__pycache__']
+let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '\.aux$', '\.pdf$', '__pycache__', 'tags']
 
 " Tag list
 nmap <leader>tt :TlistToggle<cr>
@@ -201,3 +216,8 @@ nmap <silent> <leader>t :<cr>
 
 " Ack grep
 let g:ackprg="ack-grep\\ -H\\ --nocolor\\ --nogroup\\ --column"
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
