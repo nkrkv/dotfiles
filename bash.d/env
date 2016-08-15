@@ -20,3 +20,6 @@ fi
 
 # RVM
 PATH="$PATH:$HOME/.rvm/bin"
+
+# include local node_modules scripts in PATH
+export PATH="./node_modules/.bin:$PATH"

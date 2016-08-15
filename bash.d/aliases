@@ -16,6 +16,9 @@ alias o='gnome-open 2>&1 > /dev/null'
 # Activate python environment
 alias pya='source ../bin/activate'
 
+# mocha-webpack test
+alias mw='node_modules/.bin/mocha-webpack'
+
 # Common typos
 alias kilall='killall'
 
@@ -42,7 +45,7 @@ mongograb() {
         scp $1:/tmp/DUMP_NAME.tgz . && \
         tar xzf DUMP_NAME.tgz && \
         echo "Restoring..." && \
-        mongorestore --drop $DUMP_NAME;
+        mongorestore --drop --host=127.0.0.1 $DUMP_NAME;
     popd;
 }
 
