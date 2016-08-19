@@ -14,7 +14,8 @@
     st = status
     co = checkout
     unstage = 'reset HEAD --'
+    cleanup = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d" 
 [push]
-	default = simple
+    default = simple
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
