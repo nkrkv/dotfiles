@@ -26,12 +26,6 @@ set listchars=eol:$,tab:–→,trail:~,extends:>,precedes:<,nbsp:•
 " Ignored listing patterns
 set wildignore+=*.o,*.pyc,*.orig,.hg,.git,.svn,*.jpg,*.png
 
-" Highlights too long lines
-if has("gui_running")
-    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    match OverLength /\%109v.*/
-endif
-
 syntax on  " switch syntax highlighting on
 
 " Vundle init
@@ -39,10 +33,18 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
-Plugin 'othree/yajs.vim'      " ES6 plugin
-Plugin 'othree/html5.vim'
+
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'moll/vim-bbye'
+Plugin 'othree/html5.vim'
+Plugin 'othree/yajs.vim'      " ES6 plugin
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wavded/vim-stylus'
+Plugin 'ctrlpvim/ctrlp.vim'
 call vundle#end()             " required
 
 filetype plugin indent on   " enable file type detection, use the default filetype settings
@@ -58,7 +60,7 @@ if has("gui_running")
     set guioptions-=T           " remove toolbar
     set lines=58 columns=165    " default window size
     set guiheadroom=75          " vertical reserve for decorations (two panels + title bar)
-    set guifont=Monospace\ 11
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
     colors rootwater            " default color scheme
 endif
 
@@ -78,7 +80,7 @@ autocmd FileType text setlocal textwidth=78
 
 " Enable custom syntax highlight
 augroup filetype
-  au! BufRead,BufNewFile *.xod setfiletype json
+  au! BufRead,BufNewFile *.xod* setfiletype json
   au! BufRead,BufNewFile *.ino setfiletype cpp
   au! BufRead,BufNewFile *.json5 setfiletype javascript
   au! BufRead,BufNewFile *.pde setfiletype cpp
@@ -93,6 +95,7 @@ augroup end
 augroup filetype
   au! FileType javascript set sw=2 sts=2
   au! FileType json set sw=2 sts=2
+  au! FileType yaml set sw=2 sts=2
 augroup end
 
 " Language settings
@@ -149,12 +152,19 @@ map <c-l> $
 map <c-j> 3j
 map <c-k> 3k
 
+" Move lines up and down
+nnoremap <silent> ]e :m .+1<CR>==
+nnoremap <silent> [e :m .-2<CR>==
+
 " Window navigation
 nmap <leader>h <c-w>h
 nmap <leader>j <c-w>j
 nmap <leader>k <c-w>k
 nmap <leader>l <c-w>l
 nmap <leader>w <c-w>
+
+" Buffer close
+nmap <leader>d :Bdelete<cr>
 
 " Python shortcuts
 augroup pykey
@@ -221,3 +231,38 @@ let g:ackprg="ack-grep\\ -H\\ --nocolor\\ --nogroup\\ --column"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+" AirLine
+let g:airline_theme='luna'
+
+if has("gui_running")
+    let g:airline_powerline_fonts = 1
+
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+
+    " unicode symbols
+    let g:airline_left_sep = '»'
+    let g:airline_left_sep = '▶'
+    let g:airline_right_sep = '«'
+    let g:airline_right_sep = '◀'
+    let g:airline_symbols.linenr = '␊'
+    let g:airline_symbols.linenr = '␤'
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.branch = '⎇'
+    let g:airline_symbols.paste = 'ρ'
+    let g:airline_symbols.paste = 'Þ'
+    let g:airline_symbols.paste = '∥'
+    let g:airline_symbols.whitespace = 'Ξ'
+
+    " airline symbols
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
+    let g:airline_symbols.branch = ''
+    let g:airline_symbols.readonly = ''
+    let g:airline_symbols.linenr = ''
+endif
