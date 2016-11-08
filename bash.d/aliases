@@ -11,7 +11,7 @@ mkpydir() { mkdir $1 && touch $1/__init__.py; }
 
 alias speedtest='wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip'
 
-alias o='gnome-open 2>&1 > /dev/null'
+alias o='xdg-open 2>&1 > /dev/null'
 
 # Activate python environment
 alias pya='source ../bin/activate'
