@@ -41,12 +41,15 @@ Plugin 'moll/vim-bbye'
 Plugin 'othree/html5.vim'
 Plugin 'othree/yajs.vim'      " ES6 plugin
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wavded/vim-stylus'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'majutsushi/tagbar'    " requires `npm install -g jsctags`
+Plugin 'tpope/vim-surround'
+Plugin 'nginx.vim'
 call vundle#end()             " required
 
 filetype plugin indent on   " enable file type detection, use the default filetype settings
@@ -219,6 +222,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" Ctrl+p
+let g:ctrlp_custom_ignore = 'node_modules\|dist'
 
 " AirLine
 let g:airline_theme='luna'
