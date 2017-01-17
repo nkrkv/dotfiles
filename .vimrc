@@ -45,6 +45,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wavded/vim-stylus'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'majutsushi/tagbar'    " requires `npm install -g jsctags`
 call vundle#end()             " required
 
 filetype plugin indent on   " enable file type detection, use the default filetype settings
@@ -207,22 +209,7 @@ nmap <leader>n :NERDTree<cr>
 let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '\.aux$', '\.pdf$', '__pycache__', 'tags']
 
 " Tag list
-nmap <leader>tt :TlistToggle<cr>
-let Tlist_Show_One_File=1
-let Tlist_Use_Horiz_Window=0
-let Tlist_Enable_Fold_Column=0
-let Tlist_Display_Prototype=1
-let Tlist_Display_Tag_Scope=1
-let Tlist_Close_On_Select=1
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Use_Right_Window=1
-let Tlist_WinWidth=80
-
-" Command-T
-nmap <silent> <leader>f :CommandT<cr>
-let g:CommandTMaxHeight = 20
-" map ,t to nothing so that it would not be overriden
-nmap <silent> <leader>t :<cr>
+nmap <leader>tt :Tagbar<cr>
 
 " Ack grep
 let g:ackprg="ack-grep\\ -H\\ --nocolor\\ --nogroup\\ --column"
