@@ -34,22 +34,22 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'majutsushi/tagbar'    " requires `npm install -g jsctags`
 Plugin 'moll/vim-bbye'
+Plugin 'nginx.vim'
 Plugin 'othree/html5.vim'
-Plugin 'othree/yajs.vim'      " ES6 plugin
-Plugin 'scrooloose/nerdtree'
+Plugin 'othree/yajs.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ternjs/tern_for_vim'  " depends on `npm install` inside its bundle dir
+Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wavded/vim-stylus'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'majutsushi/tagbar'    " requires `npm install -g jsctags`
-Plugin 'tpope/vim-surround'
-Plugin 'nginx.vim'
 call vundle#end()             " required
 
 filetype plugin indent on   " enable file type detection, use the default filetype settings
