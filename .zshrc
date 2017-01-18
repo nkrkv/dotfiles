@@ -1,4 +1,4 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=./node_modules/.bin:$HOME/bin:/usr/local/bin:$PATH
 export TERM="xterm-256color"
 
 DEFAULT_USER=nailxx
