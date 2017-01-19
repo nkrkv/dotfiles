@@ -4,6 +4,9 @@ export TERM="xterm-256color"
 DEFAULT_USER=nailxx
 COMPLETION_WAITING_DOTS="true"
 
+# Rehash autocompletion real-time
+zstyle ":completion:*:commands" rehash 1
+
 source ~/.dotfiles/zsh.d/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
