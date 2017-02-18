@@ -40,9 +40,11 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'majutsushi/tagbar'    " requires `npm install -g jsctags`
 Plugin 'moll/vim-bbye'
+Plugin 'mxw/vim-jsx'
 Plugin 'nginx.vim'
 Plugin 'othree/html5.vim'
 Plugin 'othree/yajs.vim'
+Plugin 'raichoo/purescript-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ternjs/tern_for_vim'  " depends on `npm install` inside its bundle dir
