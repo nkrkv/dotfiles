@@ -1,4 +1,5 @@
 export PATH=./node_modules/.bin:$HOME/bin:/usr/local/bin:$PATH
+export EDITOR=vim
 export TERM="xterm-256color"
 
 DEFAULT_USER=nailxx
