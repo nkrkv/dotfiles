@@ -48,6 +48,7 @@ Plugin 'raichoo/purescript-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ternjs/tern_for_vim'  " depends on `npm install` inside its bundle dir
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
