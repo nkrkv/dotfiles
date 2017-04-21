@@ -11,6 +11,7 @@ zstyle ":completion:*:commands" rehash 1
 source ~/.dotfiles/zsh.d/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
+antigen bundle git-extras
 antigen bundle systemd
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
