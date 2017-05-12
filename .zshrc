@@ -17,5 +17,9 @@ antigen bundle yarn
 antigen bundle systemd
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+
 antigen theme bhilburn/powerlevel9k powerlevel9k
 antigen apply
