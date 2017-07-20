@@ -1,4 +1,7 @@
-export PATH=./node_modules/.bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=./node_modules/.bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.4.0/bin:$PATH
 export EDITOR=vim
 export TERM="xterm-256color"
 
