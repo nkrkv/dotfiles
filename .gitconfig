@@ -19,3 +19,5 @@
     default = simple
 [core]
     excludesfile = ~/.gitignore
+[cola]
+	spellcheck = false
