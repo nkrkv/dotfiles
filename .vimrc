@@ -104,7 +104,7 @@ augroup filetype
   au! FileType javascript set sw=2 sts=2
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
-  au! FileType cpp set sw=2 sts=2
+  au! FileType cpp set sw=4 sts=4
 augroup end
 
 " Language settings
