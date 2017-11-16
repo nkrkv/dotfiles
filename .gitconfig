@@ -16,8 +16,10 @@
     unstage = 'reset HEAD --'
     cleanup = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d" 
 [push]
-    default = simple
+	default = current
 [core]
     excludesfile = ~/.gitignore
 [cola]
 	spellcheck = false
+[rebase]
+	autosquash = true
