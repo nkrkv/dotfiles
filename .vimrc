@@ -16,7 +16,7 @@ set scrolloff=5     " keep at minimum few lines from top and bottom when scrolli
 set wildmenu        " autocompletion of commands
 set notimeout       " wait for ambigous key in key map forever
 set hidden          " allow moving around and leaving dirty files be
-set laststatus=2    " make sure that status line is always shown as 
+set laststatus=2    " make sure that status line is always shown as
                     "   the second last line in the editor window
 set tags=tags       " look for tags only in cwd/tags file
 set nofoldenable    " no folding
@@ -84,7 +84,7 @@ autocmd BufReadPost *
 augroup END
 
 " For all text files set 'textwidth' to 78 characters.
-autocmd FileType text setlocal textwidth=78 
+autocmd FileType text setlocal textwidth=78
 
 " Enable custom syntax highlight
 augroup filetype
