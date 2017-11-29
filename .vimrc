@@ -199,6 +199,23 @@ endfunction
 nmap <silent> <leader>tf :exe ":silent !ctags %"<cr>
 nmap <silent> <leader>td :exe ":silent !ctags -R ."<cr>
 
+" ===========================================================================
+" Inline plugins
+" ===========================================================================
+
+" Format the current file removing hard line wrapping
+" https://stackoverflow.com/questions/11039544/unwrap-text-in-vim
+function! Unwrap() range
+    let s:old_fo = &formatoptions
+    let s:old_tw = &textwidth
+    set fo=
+    set tw=999999 " works for paragraphs up to 12k lines
+    execute "normal" a:firstline . "gggq" . a:lastline . "gg"
+    "normal gggqG
+    let &fo = s:old_fo
+    let &tw = s:old_tw
+endfunction
+command! -range=% Unwrap <line1>,<line2>call Unwrap()
 
 " ===========================================================================
 " Plugin settings
