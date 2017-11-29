@@ -12,6 +12,9 @@ COMPLETION_WAITING_DOTS="true"
 # Rehash autocompletion real-time
 zstyle ":completion:*:commands" rehash 1
 
+# Enable zmv
+autoload -U zmv
+
 source ~/.dotfiles/zsh.d/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
