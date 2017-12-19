@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+BUILD_DIR=/tmp/uno-build
+mkdir -p $BUILD_DIR
+
+arduino-builder \
+    -hardware=/home/nailxx/.arduino15/packages \
+    -hardware=/usr/share/arduino/hardware \
+    -tools=/home/nailxx/.arduino15/packages \
+    -tools=/usr/share/arduino/tools \
+    -fqbn=arduino:avr:uno \
+    -build-path=$BUILD_DIR \
+    $1
