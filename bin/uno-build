@@ -6,10 +6,11 @@ BUILD_DIR=/tmp/uno-build
 mkdir -p $BUILD_DIR
 
 arduino-builder \
-    -hardware=/home/nailxx/.arduino15/packages \
+    -hardware=$HOME/.arduino15/packages \
     -hardware=/usr/share/arduino/hardware \
-    -tools=/home/nailxx/.arduino15/packages \
+    -tools=$HOME/.arduino15/packages \
     -tools=/usr/share/arduino/tools \
+    -libraries=$HOME/Arduino/libraries \
     -fqbn=arduino:avr:uno \
     -build-path=$BUILD_DIR \
-    $1
+    $@
