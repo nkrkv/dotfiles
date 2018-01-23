@@ -2,6 +2,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=./node_modules/.bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.gem/ruby/2.4.0/bin:$PATH
+export PATH=.yarn/bin:$PATH
 export EDITOR=vim
 export TERM="xterm-256color"
 export XOD_PRODUCTION_CONTEXT=gke_xodio-146312_us-central1-a_production
