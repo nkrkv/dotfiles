@@ -46,6 +46,7 @@ Plugin 'nginx.vim'
 Plugin 'othree/html5.vim'
 Plugin 'othree/yajs.vim'
 Plugin 'raichoo/purescript-vim'
+Plugin 'reasonml-editor/vim-reason-plus'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ternjs/tern_for_vim'  " depends on `npm install` inside its bundle dir
