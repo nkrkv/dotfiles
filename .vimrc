@@ -249,6 +249,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|dist'
 
 " AirLine
 let g:airline_theme='luna'
+let g:airline#extensions#keymap#enabled = '0'
 
 if has("gui_running")
     let g:airline_powerline_fonts = 1
