@@ -37,6 +37,7 @@ Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'jremmen/vim-ripgrep'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'majutsushi/tagbar'    " requires `npm install -g jsctags`
 Plugin 'moll/vim-bbye'
