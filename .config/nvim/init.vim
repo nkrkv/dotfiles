@@ -20,11 +20,6 @@ set listchars=eol:$,tab:–→,trail:~,extends:>,precedes:<,nbsp:•
 " Ignored listing patterns
 set wildignore+=*.o,*.pyc,*.orig,.hg,.git,.svn,*.jpg,*.png
 
-" Colors
-colorscheme one
-set background=dark
-set termguicolors
-
 " Language settings
 set keymap=russian-jcukenwin    " переключение на русский по Ctrl+^
 set iminsert=0                  " по умолчанию -- английский для ввода
@@ -52,11 +47,16 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " ===========================================================================
-" Filetypes
+" Colors
 " ===========================================================================
 
-" enable file type detection, use the default filetype settings
-filetype plugin indent on
+colorscheme one
+set background=dark
+set termguicolors
+
+" ===========================================================================
+" Filetypes
+" ===========================================================================
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
