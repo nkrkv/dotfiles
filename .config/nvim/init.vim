@@ -31,7 +31,20 @@ highlight lCursor guifg=NONE guibg=Cyan " подсветка курсора пр
 " Plugins
 " ===========================================================================
 
+" Be explicit about python binaries
+let g:python2_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
+
+" Language server requires the following to be installed manually:
+" - Python: `pacman -Sy python-neovim python2-neovim` or with pip2/pip3
+" - NodeJS: `npm install -g neovim`
+" - ReasonML CLI: `npm install -g reason-cli@3.1.0-linux`
+
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'rakr/vim-one' " color scheme
@@ -41,6 +54,9 @@ Plug 'othree/yajs.vim'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'Shougo/deoplete.nvim', {
+    \ 'do': ':UpdateRemotePlugins'
+    \ } " Completion plugin for LanguageClient
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -152,6 +168,14 @@ nmap <leader>w <c-w>
 nmap <m-=> <c-w>5+
 nmap <m--> <c-w>5-
 
+" -------------------------------------
+" Language
+" -------------------------------------
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> ]r :call LanguageClient#textDocument_rename()<CR>
+
 " ===========================================================================
 " Plugin settings
 " ===========================================================================
@@ -166,6 +190,15 @@ let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '
 
 " Ctrl+p
 let g:ctrlp_custom_ignore = 'node_modules\|dist\|lib'
+
+" -------------------------------------
+" Language server start commands
+" -------------------------------------
+
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ }
 
 " -------------------------------------
 " AirLine
