@@ -40,6 +40,13 @@ let g:python3_host_prog = '/usr/bin/python3'
 " - NodeJS: `npm install -g neovim`
 " - ReasonML CLI: `npm install -g reason-cli@3.1.0-linux`
 
+" Automatically install vim-plug on the first run
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
