@@ -1,0 +1,4 @@
+#!/bin/bash
+# Utility to run nvim GTK client from terminal
+# Runs a new detached session with stdio suppressed
+setsid nvim-gtk 2>&1 > /dev/null &
