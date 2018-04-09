@@ -6,6 +6,7 @@ export PATH=$HOME/.yarn/bin:$PATH
 export EDITOR=vim
 export TERM="xterm-256color"
 export XOD_PRODUCTION_CONTEXT=gke_xodio-146312_us-central1-a_production
+export XOD_STAGING_CONTEXT=gke_xodio-146312_us-central1-a_staging
 
 DEFAULT_USER=nailxx
 COMPLETION_WAITING_DOTS="true"
