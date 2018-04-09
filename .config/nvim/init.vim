@@ -123,6 +123,9 @@ nmap <leader>d :Bdelete<cr>
 " ,h to clear search highlight
 nmap <silent> <leader>/ :nohl<cr>
 
+" F1 to view/edit the personal cheatsheet
+nmap <F1> :tabe ~/.dotfiles/vim-cheatsheet.md<CR>
+
 " -------------------------------------
 " Clipboard
 " -------------------------------------
