@@ -48,11 +48,12 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
+
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'ctrlpvim/ctrlp.vim'
+
 Plug 'fholgado/minibufexpl.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'rakr/vim-one' " color scheme
@@ -62,9 +63,14 @@ Plug 'othree/yajs.vim'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', {
-    \ 'do': ':UpdateRemotePlugins'
-    \ } " Completion plugin for LanguageClient
+
+" Completion plugin for LanguageClient
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Unite everything UI
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" You/change/delete surrounding quotes, braces, etc
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -222,3 +228,39 @@ let g:airline_powerline_fonts = 1
 
 " Minimalistic leftmost section: 45%/623  223:46
 let g:airline_section_z = '%P/%L  %3l:%-2c'
+
+" -------------------------------------
+" Denite
+" -------------------------------------
+
+" File listing with ripgrep
+call denite#custom#var('file/rec', 'command',
+    \ ['rg', '--files'])
+
+" Grepping with ripgrep
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['--hidden', '--vimgrep', '--no-heading', '--smart-case'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+" Reset to a quarter of window height on resize
+augroup deniteresize
+  autocmd!
+  autocmd VimResized,VimEnter * call
+    \ denite#custom#option('default','winheight', winheight(0) / 4)
+augroup end
+
+" Minimalistic highlight: only matched characters
+call denite#custom#option('default', 'highlight_matched_char', 'Keyword')
+call denite#custom#option('default', 'highlight_matched_range', 'Normal')
+
+nnoremap <leader>ff :Denite file/rec<CR>
+nnoremap <leader>fF :DeniteBufferDir file/rec<CR>
+nnoremap <leader>fb :Denite buffer<CR>
+nnoremap <leader>fB :DeniteBufferDir buffer<CR>
+nnoremap <leader>fw :Denite grep:. -mode=normal<CR>
+nnoremap <leader>fW :DeniteBufferDir grep:. -mode=normal<CR>
+nnoremap <leader>8 :DeniteCursorWord grep:. -mode=normal<CR>
