@@ -194,6 +194,22 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> ]r :call LanguageClient#textDocument_rename()<CR>
 
+" -------------------------------------
+" Fuzzy find
+" -------------------------------------
+" find file
+nnoremap <leader>ff :Denite file/rec<CR>
+" find neighbor File
+nnoremap <leader>fF :DeniteBufferDir file/rec<CR>
+" find buffer
+nnoremap <leader>fb :Denite buffer<CR>
+" find word
+nnoremap <leader>fw :Denite grep:. -mode=normal<CR>
+" find Word in neighbors
+nnoremap <leader>fW :DeniteBufferDir grep:. -mode=normal<CR>
+" *-find in project files
+nnoremap <leader>8 :DeniteCursorWord grep:. -mode=normal<CR>
+
 " ===========================================================================
 " Plugin settings
 " ===========================================================================
@@ -224,9 +240,7 @@ let g:LanguageClient_serverCommands = {
 
 let g:airline_theme='one'
 let g:airline#extensions#keymap#enabled = '0'
-
 let g:airline_powerline_fonts = 1
-
 " Minimalistic leftmost section: 45%/623  223:46
 let g:airline_section_z = '%P/%L  %3l:%-2c'
 
@@ -247,6 +261,10 @@ call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 
+" Ctrl+n/Ctrl+p to navigate through lines in insert mode
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+
 " Reset to a quarter of window height on resize
 augroup deniteresize
   autocmd!
@@ -257,11 +275,3 @@ augroup end
 " Minimalistic highlight: only matched characters
 call denite#custom#option('default', 'highlight_matched_char', 'Keyword')
 call denite#custom#option('default', 'highlight_matched_range', 'Normal')
-
-nnoremap <leader>ff :Denite file/rec<CR>
-nnoremap <leader>fF :DeniteBufferDir file/rec<CR>
-nnoremap <leader>fb :Denite buffer<CR>
-nnoremap <leader>fB :DeniteBufferDir buffer<CR>
-nnoremap <leader>fw :Denite grep:. -mode=normal<CR>
-nnoremap <leader>fW :DeniteBufferDir grep:. -mode=normal<CR>
-nnoremap <leader>8 :DeniteCursorWord grep:. -mode=normal<CR>
