@@ -39,11 +39,6 @@ autocmd FocusGained * :checktime
 let g:python2_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 
-" Language server requires the following to be installed manually:
-" - Python: `pacman -Sy python-neovim python2-neovim` or with pip2/pip3
-" - NodeJS: `npm install -g neovim`
-" - ReasonML CLI: `npm install -g reason-cli@3.1.0-linux`
-
 " Automatically install vim-plug on the first run
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
