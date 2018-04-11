@@ -57,6 +57,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'fholgado/minibufexpl.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'rakr/vim-one' " color scheme
+Plug 'moll/vim-bbye' " bdelete
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
