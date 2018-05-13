@@ -28,3 +28,5 @@ npm install -g neovim
 
 ReasonML language server: `npm install -g reason-cli@3.1.0-linux`
 
+JavaScript language server: `yaourt -Sy javascript-typescript-langserver`
+
