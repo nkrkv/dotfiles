@@ -144,6 +144,9 @@ vmap <leader>y "+y
 map <leader>p "+p
 map <leader>P "+P
 
+" copy current buffer path into system clipboard
+nmap <leader>% :let @+=expand("%")<CR>
+
 " -------------------------------------
 " Text navigation
 " -------------------------------------
