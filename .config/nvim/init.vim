@@ -236,8 +236,6 @@ let g:ctrlp_custom_ignore = 'node_modules\|dist\|lib'
 let g:LanguageClient_serverCommands = {
     \ 'reason': ['ocaml-language-server', '--stdio'],
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ }
 
 " -------------------------------------
