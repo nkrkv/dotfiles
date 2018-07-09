@@ -63,6 +63,7 @@ Plug 'othree/yajs.vim'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-liquid'
 
 " Completion plugin for LanguageClient
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
