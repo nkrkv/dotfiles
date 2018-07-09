@@ -1,4 +1,16 @@
-# My dotfiles
+# My Dotfiles
+
+Managed by GNU Stow. To setup on a new system:
+
+```bash
+$ yaourt -Sy stow
+$ git clone git@github.com:nkrkv/dotfiles.git ~/.dotfiles
+$ cd ~/.dotfiles
+
+$ stow zsh
+$ stow nvim
+# etc ...
+```
 
 ## Terminal fonts
 
@@ -19,7 +31,7 @@ $ yaourt -Sy neovim-gtk-git
 $ nvim-gtk
 ```
 
-## Language Server/Client
+### Language Server/Client
 
 Neovim as a language client requires:
 

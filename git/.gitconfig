@@ -1,0 +1,25 @@
+[user]
+	name = Victor Nakoryakov
+	email = nail.xx@gmail.com
+
+[color]
+	diff  = auto
+	status= auto
+	branch= auto
+	interactive = true
+
+[alias]
+	st = status
+	co = checkout
+
+[push]
+	default = current
+
+[core]
+	excludesfile = ~/.gitignore
+
+[cola]
+	spellcheck = false
+
+[rebase]
+	autosquash = true
