@@ -17,7 +17,9 @@ zstyle ":completion:*:commands" rehash 1
 # Enable zmv
 autoload -U zmv
 
-source ~/.dotfiles/zsh.d/antigen.zsh
+# Antigen provided by `yaourt -Sy antigen-git`
+source /usr/share/zsh/share/antigen.zsh
+
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle git-extras
