@@ -65,16 +65,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-liquid'
 
-" Completion plugin for LanguageClient
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" Unite everything UI
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-
 " You/change/delete surrounding quotes, braces, etc
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" FZF. Relies on the global fzf tool installation
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 " ===========================================================================
@@ -202,18 +201,8 @@ nnoremap <silent> ]r :call LanguageClient#textDocument_rename()<CR>
 " -------------------------------------
 " Fuzzy find
 " -------------------------------------
-" find file
-nnoremap <leader>ff :Denite file/rec<CR>
-" find neighbor File
-nnoremap <leader>fF :DeniteBufferDir file/rec<CR>
-" find buffer
-nnoremap <leader>fb :Denite buffer<CR>
-" find word
-nnoremap <leader>fw :Denite grep:. -mode=normal<CR>
-" find Word in neighbors
-nnoremap <leader>fW :DeniteBufferDir grep:. -mode=normal<CR>
-" *-find in project files
-nnoremap <leader>8 :DeniteCursorWord grep:. -mode=normal<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fb :Buffers<CR>
 
 " ===========================================================================
 " Plugin settings
@@ -250,33 +239,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_section_z = '%P/%L  %3l:%-2c'
 
 " -------------------------------------
-" Denite
+" FZF
 " -------------------------------------
 
-" File listing with ripgrep
-call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files'])
-
-" Grepping with ripgrep
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-    \ ['--hidden', '--vimgrep', '--no-heading', '--smart-case'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-" Ctrl+n/Ctrl+p to navigate through lines in insert mode
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
-
-" Reset to a quarter of window height on resize
-augroup deniteresize
-  autocmd!
-  autocmd VimResized,VimEnter * call
-    \ denite#custom#option('default','winheight', winheight(0) / 4)
-augroup end
-
-" Minimalistic highlight: only matched characters
-call denite#custom#option('default', 'highlight_matched_char', 'Keyword')
-call denite#custom#option('default', 'highlight_matched_range', 'Normal')
+let g:fzf_layout = { 'down': '~20%' }
