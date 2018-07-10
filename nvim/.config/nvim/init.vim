@@ -213,11 +213,8 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
 " NERDTree
-nmap <leader>n :NERDTree<cr>
+nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '\.aux$', '\.pdf$', '__pycache__', 'tags']
-
-" Ctrl+p
-let g:ctrlp_custom_ignore = 'node_modules\|dist\|lib'
 
 " -------------------------------------
 " Language server start commands
