@@ -36,5 +36,11 @@ antigen bundle zsh-users/zsh-autosuggestions
 export NVM_LAZY_LOAD=true
 antigen bundle lukechilds/zsh-nvm
 
-antigen theme bhilburn/powerlevel9k powerlevel9k
+#antigen theme bhilburn/powerlevel9k powerlevel9k
+
+# Theme https://github.com/sindresorhus/pure
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
+export PURE_PROMPT_SYMBOL="$"
+
 antigen apply
