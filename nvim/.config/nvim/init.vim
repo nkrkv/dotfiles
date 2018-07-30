@@ -53,6 +53,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
 Plug 'fholgado/minibufexpl.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'rakr/vim-one' " color scheme
@@ -203,6 +204,16 @@ nnoremap <silent> ]r :call LanguageClient#textDocument_rename()<CR>
 " -------------------------------------
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fb :Buffers<CR>
+
+" -------------------------------------
+" Arguments movement and objects
+" -------------------------------------
+nnoremap <leader>< :SidewaysLeft<CR>
+nnoremap <leader>> :SidewaysRight<CR>
+omap aa <Plug>SidewaysArgumentTextobjA
+xmap aa <Plug>SidewaysArgumentTextobjA
+omap ia <Plug>SidewaysArgumentTextobjI
+xmap ia <Plug>SidewaysArgumentTextobjI
 
 " ===========================================================================
 " Plugin settings
