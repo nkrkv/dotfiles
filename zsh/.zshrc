@@ -5,10 +5,13 @@ export PATH=$HOME/.gem/ruby/2.4.0/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
 export EDITOR=nvim
 export TERM="xterm-256color"
+export FZF_DEFAULT_COMMAND='fd --type f --follow'
+
+# Project env vars
 export XOD_PRODUCTION_CONTEXT=gke_xodio-146312_us-central1-a_production
 export XOD_STAGING_CONTEXT=gke_xodio-146312_us-central1-a_staging
-
-export FZF_DEFAULT_COMMAND='fd --type f --follow'
+export AMPERKA_THEME_REVIEW=1023854
+export AMPERKA_THEME_PRODUCTION=1041717
 
 alias e=nvim-gtk
 alias o=xdg-open
