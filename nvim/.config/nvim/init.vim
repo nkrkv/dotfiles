@@ -75,6 +75,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
+" Distraction-free writing in Vim.
+Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
 " ===========================================================================
