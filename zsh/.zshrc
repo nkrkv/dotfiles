@@ -42,6 +42,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 export NVM_LAZY_LOAD=true
 antigen bundle lukechilds/zsh-nvm
 
+antigen bundle davidparsson/zsh-pyenv-lazy
+
 #antigen theme bhilburn/powerlevel9k powerlevel9k
 
 # Theme https://github.com/sindresorhus/pure
