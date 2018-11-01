@@ -183,18 +183,12 @@ nnoremap <silent> [e :m .-2<CR>==
 " Window/split management
 " -------------------------------------
 
-" Ctrl+W+xxx is hard to press. Alt+xxx is a faster alternative
-nmap <m-h> <c-w>h
-nmap <m-j> <c-w>j
-nmap <m-k> <c-w>k
-nmap <m-l> <c-w>l
-
-" Alt+O to leave the current window only
-nmap <m-o> :only<cr>
+" Ctrl+W+xxx is hard to press. leader W is a faster alternative
+nnoremap <leader>w <c-w>
 
 " Alt with + or - key to resize current window
-nmap <m-=> <c-w>5+
-nmap <m--> <c-w>5-
+nnoremap <m-=> <c-w>5+
+nnoremap <m--> <c-w>5-
 
 " -------------------------------------
 " Language
