@@ -53,26 +53,31 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
-Plug 'fholgado/minibufexpl.vim'
-Plug 'jremmen/vim-ripgrep'
-Plug 'rakr/vim-one' " color scheme
-Plug 'moll/vim-bbye' " bdelete
+" Language support
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-liquid'
 
-" You/change/delete surrounding quotes, braces, etc
-Plug 'tpope/vim-surround'
+" Editing
+Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
+Plug 'junegunn/goyo.vim' " distraction-free writing
+Plug 'scrooloose/nerdcommenter' " comment blocks
+Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
+
+" UI
+Plug 'fholgado/minibufexpl.vim'
+Plug 'rakr/vim-one' " color scheme
+Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" FZF. Relies on the global fzf tool installation
-Plug '/usr/bin/fzf'
+" Navigation
+Plug 'jremmen/vim-ripgrep' " :Rg
+Plug 'moll/vim-bbye' " bdelete
+
+Plug '/usr/bin/fzf' " FZF relies on the global fzf tool installation
 Plug 'junegunn/fzf.vim'
 
 " Distraction-free writing in Vim.
@@ -169,9 +174,11 @@ map <c-k> 3k
 " Line-wise editing
 " -------------------------------------
 
-" Map Enter in normal mode to insert blank lines above/bellow cursor
-nmap <s-cr> m'O<esc>`'
-nmap <cr> m'o<esc>`'
+" Map Enter in normal mode to insert blank lines above/bellow cursor. Avoid
+" cursor movement with a mark. Apply only if a buffer is modifiable not to
+" mess navigation in special windows like FZF or NERDTree.
+nnoremap <expr> <CR> &modifiable ? "m'o<ESC>`'" : "\<CR>"
+nnoremap <expr> <S-CR> &modifiable ? "m'O\<ESC>`'" : "\<S-CR>"
 
 " Swap the current line with line above/below
 nnoremap <silent> ]e :m .+1<CR>==
@@ -181,18 +188,12 @@ nnoremap <silent> [e :m .-2<CR>==
 " Window/split management
 " -------------------------------------
 
-" Ctrl+W+xxx is hard to press. Alt+xxx is a faster alternative
-nmap <m-h> <c-w>h
-nmap <m-j> <c-w>j
-nmap <m-k> <c-w>k
-nmap <m-l> <c-w>l
-
-" Alt+O to leave the current window only
-nmap <m-o> :only<cr>
+" Ctrl+W+xxx is hard to press. leader W is a faster alternative
+nnoremap <leader>w <c-w>
 
 " Alt with + or - key to resize current window
-nmap <m-=> <c-w>5+
-nmap <m--> <c-w>5-
+nnoremap <m-=> <c-w>5+
+nnoremap <m--> <c-w>5-
 
 " -------------------------------------
 " Language
