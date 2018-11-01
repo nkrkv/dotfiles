@@ -53,30 +53,32 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
-Plug 'fholgado/minibufexpl.vim'
-Plug 'jremmen/vim-ripgrep'
-Plug 'rakr/vim-one' " color scheme
-Plug 'moll/vim-bbye' " bdelete
+" Language support
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-liquid'
 
-" You/change/delete surrounding quotes, braces, etc
-Plug 'tpope/vim-surround'
+" Editing
+Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
+Plug 'junegunn/goyo.vim' " distraction-free writing
+Plug 'scrooloose/nerdcommenter' " comment blocks
+Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
+
+" UI
+Plug 'fholgado/minibufexpl.vim'
+Plug 'rakr/vim-one' " color scheme
+Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" FZF. Relies on the global fzf tool installation
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'
+" Navigation
+Plug 'jremmen/vim-ripgrep' " :Rg
+Plug 'moll/vim-bbye' " bdelete
 
-" Distraction-free writing in Vim
-Plug 'junegunn/goyo.vim'
+Plug '/usr/bin/fzf' " FZF relies on the global fzf tool installation
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
