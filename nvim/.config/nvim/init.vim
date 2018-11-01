@@ -171,9 +171,11 @@ map <c-k> 3k
 " Line-wise editing
 " -------------------------------------
 
-" Map Enter in normal mode to insert blank lines above/bellow cursor
-nmap <s-cr> m'O<esc>`'
-nmap <cr> m'o<esc>`'
+" Map Enter in normal mode to insert blank lines above/bellow cursor. Avoid
+" cursor movement with a mark. Apply only if a buffer is modifiable not to
+" mess navigation in special windows like FZF or NERDTree.
+nnoremap <expr> <CR> &modifiable ? "m'o<ESC>`'" : "\<CR>"
+nnoremap <expr> <S-CR> &modifiable ? "m'O\<ESC>`'" : "\<S-CR>"
 
 " Swap the current line with line above/below
 nnoremap <silent> ]e :m .+1<CR>==
