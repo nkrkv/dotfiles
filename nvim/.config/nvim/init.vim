@@ -191,6 +191,12 @@ nnoremap <silent> [e :m .-2<CR>==
 " Ctrl+W+xxx is hard to press. leader W is a faster alternative
 nnoremap <leader>w <c-w>
 
+" Quick window navigation
+nnoremap <leader>h <c-w>h
+nnoremap <leader>j <c-w>j
+nnoremap <leader>k <c-w>k
+nnoremap <leader>l <c-w>l
+
 " Alt with + or - key to resize current window
 nnoremap <m-=> <c-w>5+
 nnoremap <m--> <c-w>5-
