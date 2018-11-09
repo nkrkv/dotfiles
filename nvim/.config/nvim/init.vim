@@ -233,9 +233,16 @@ xmap ia <Plug>SidewaysArgumentTextobjI
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
+" -------------------------------------
 " NERDTree
-nmap <leader>n :NERDTreeToggle<CR>
+" -------------------------------------
+
+" Shortcut to open immediatelly followed be MiniBufExplorer reopen to keep
+" the latter split at the to edge
+nmap <silent> <leader>n :NERDTreeToggle <BAR> :MBEOpen!<CR>
+
 let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '\.aux$', '\.pdf$', '__pycache__', 'tags']
+let NERDTreeMinimalUI=1
 
 " -------------------------------------
 " Language server start commands
