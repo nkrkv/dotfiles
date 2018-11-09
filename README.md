@@ -20,6 +20,12 @@ Required for ZSH.
 $ yaourt -Sy powerline-fonts-git awesome-terminal-fonts
 ```
 
+## Herbstluft WM
+
+```bash
+$ yaourt -Sy i3lock gnome-do amixer-utils feh
+```
+
 ## NVim
 
 ### Viable Neovim GTK client
