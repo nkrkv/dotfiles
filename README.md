@@ -29,7 +29,7 @@ $ yaourt -Sy i3lock gnome-do amixer-utils feh
 ## BSPWM
 
 ```bash
-$ yaourt -Sy bspwm-git sxhkd i3lock amixer-utils ulauncher
+$ yaourt -Sy bspwm-git sxhkd compton i3lock amixer-utils ulauncher
 ```
 
 ## NVim
