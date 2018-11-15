@@ -26,6 +26,12 @@ $ yaourt -Sy powerline-fonts-git awesome-terminal-fonts
 $ yaourt -Sy i3lock gnome-do amixer-utils feh
 ```
 
+## BSPWM
+
+```bash
+$ yaourt -Sy bspwm-git sxhkd i3lock amixer-utils ulauncher
+```
+
 ## NVim
 
 ### Viable Neovim GTK client
