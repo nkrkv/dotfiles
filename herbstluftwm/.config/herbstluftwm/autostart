@@ -3,23 +3,6 @@
 LAUNCHER=gnome-do
 LOCK_SCREEN=i3lock
 
-#=======================================================================
-# X config
-#=======================================================================
-
-# no speaker bell
-xset -b
-
-# two keyboard layouts, reset options first...
-setxkbmap -layout us,ru -option
-# then reset options:
-# * Caps Lock to switch layouts (grp:caps_toggle)
-# * Enable extra typographic characters ¥§€ (misc:typo)
-# * Use right alt to type the extra typographic chars (lv3:ralt_switch)
-setxkbmap -layout us,ru -option "grp:caps_toggle,lv3:ralt_switch,misc:typo"
-
-# key auto-repeat after 400 ms at 40 Hz
-xset r rate 400 40
 
 #=======================================================================
 # Herbstluftwm config
