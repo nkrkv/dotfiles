@@ -14,14 +14,9 @@ hdir=$(dirname $0)
 pkill -u $USER -x 'herbstclient'
 
 # Panel
-pkill -u $USER -x 'panel.sh'
-
-panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" $monitor &
-done
+pkill -u $USER 'polybar'
+polybar 'top' &
+herbstclient pad 18 # matches the polybar config height
 
 # Composer
 pkill -u $USER -x 'compton'
@@ -41,9 +36,9 @@ hc mouseunbind --all
 #=======================================================================
 
 # Media
-hc keybind XF86AudioLowerVolume  spawn $hdir/volume.sh down
-hc keybind XF86AudioRaiseVolume  spawn $hdir/volume.sh up
-hc keybind XF86AudioMute         spawn $hdir/volume.sh mute
+hc keybind XF86AudioLowerVolume  spawn amixer -q set Master 2%- unmute
+hc keybind XF86AudioRaiseVolume  spawn amixer -q set Master 2%+ unmute
+hc keybind XF86AudioMute         spawn amixer -q set Master mute
 
 # Session management
 hc keybind Alt-Control-l       spawn ${LOCK_SCREEN}
