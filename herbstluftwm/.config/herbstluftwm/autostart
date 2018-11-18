@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LAUNCHER=gnome-do
+LAUNCHER="rofi -show drun -modi drun -show-icons"
 LOCK_SCREEN=i3lock
 
 #=======================================================================
