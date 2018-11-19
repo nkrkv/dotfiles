@@ -7,29 +7,24 @@ LOCK_SCREEN=i3lock
 # Startup / reset / reload
 #=======================================================================
 
-# Herbstluft home dir (~/.config/herbstluftwm)
-hdir=$(dirname $0)
-
-# Kill dangling herbstclients (e.g., for the panel)
-pkill -u $USER -x 'herbstclient'
-
-# Panel
-pkill -u $USER 'polybar'
-polybar 'top' &
-herbstclient pad 18 # matches the polybar config height
-
 # Composer
 pkill -u $USER -x 'compton'
 compton &
 
+# Herbstluft WM
+
+# kill dangling clients (e.g., for the panel)
+pkill -u $USER 'herbstclient'
+
+# short alias
 hc() {
     herbstclient "$@"
 }
 
 hc emit_hook reload
-
 hc keyunbind --all
 hc mouseunbind --all
+hc detect_monitors
 
 #=======================================================================
 # Key bindings
@@ -111,7 +106,7 @@ hc keybind Alt-Tab          cycle_all +1
 hc keybind Alt-Shift-Tab    cycle_all -1
 
 #=======================================================================
-# Theme
+# Theme and WM settings
 #=======================================================================
 
 xsetroot -solid '#222222' # fallback if no wallpaper
@@ -148,6 +143,9 @@ hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
 
+hc set focus_follows_mouse 1
+hc set tree_style '╾│ ├└╼─┐'
+
 #=======================================================================
 # Rules
 #=======================================================================
@@ -157,13 +155,19 @@ hc rule focus=on # normally focus new clients
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-hc rule class=Do manage=off # Gnome Do over all windows
 
 #=======================================================================
-# Misc
+# Panel
 #=======================================================================
 
-hc set focus_follows_mouse 1
-hc set tree_style '╾│ ├└╼─┐'
+# 18px matches the polybar config height
+hc pad 0 18 
+
+pkill -u $USER 'polybar'
+polybar 'top' &
+
+#=======================================================================
+# Finalize / Redraw all
+#=======================================================================
+
 hc unlock
-hc detect_monitors
