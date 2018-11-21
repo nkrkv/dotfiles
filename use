@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+for arg in "$@"
+do
+    case $arg in
+        "dconf" )
+            cat $(dirname $0)/dconf/*.cfg | dconf load /
+            ;;
+    esac
+done
