@@ -60,6 +60,10 @@ Plug 'othree/yajs.vim'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'tpope/vim-liquid'
 
+" Python
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
+
 " Editing
 Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
 Plug 'junegunn/goyo.vim' " distraction-free writing
@@ -228,6 +232,10 @@ xmap ia <Plug>SidewaysArgumentTextobjI
 " ===========================================================================
 " Plugin settings
 " ===========================================================================
+
+" Python mode
+let g:pymode_python = 'python3'
+let g:pymode_rope = 1
 
 " Minibuf explorer
 let g:miniBufExplMapCTabSwitchBufs = 1
