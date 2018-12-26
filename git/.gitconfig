@@ -11,6 +11,8 @@
 [alias]
 	st = status
 	co = checkout
+	ci = commit
+	ff = pull --ff-only
 
 [push]
 	default = current
