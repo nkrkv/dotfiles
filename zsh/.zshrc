@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:$PATH
 export PATH=./node_modules/.bin:$PATH
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
-export PATH=$HOME/.gem/ruby/2.4.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
 export EDITOR=nvim
 export TERM="xterm-256color"
@@ -10,8 +10,10 @@ export FZF_DEFAULT_COMMAND='fd --type f --follow'
 # Project env vars
 export XOD_PRODUCTION_CONTEXT=gke_xodio-146312_us-central1-a_production
 export XOD_STAGING_CONTEXT=gke_xodio-146312_us-central1-a_staging
-export AMPERKA_THEME_REVIEW=1023854
-export AMPERKA_THEME_PRODUCTION=1041717
+export AMPERKA_RU_THEME_REVIEW=1023854
+export AMPERKA_RU_THEME_PRODUCTION=1041717
+export AMPERKA_COM_THEME_REVIEW=45725417530
+export AMPERKA_COM_THEME_PRODUCTION=11524898874
 
 alias e=nvim-gtk
 alias o=xdg-open
