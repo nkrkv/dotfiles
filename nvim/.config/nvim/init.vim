@@ -124,6 +124,8 @@ augroup filetype
   au! FileType javascript set sw=2 sts=2
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
+  au! FileType reason set sw=2 sts=2
+  au! FileType html set sw=2 sts=2
   au! FileType cpp set sw=4 sts=4
 augroup end
 
@@ -238,6 +240,7 @@ xmap ia <Plug>SidewaysArgumentTextobjI
 " Python mode
 let g:pymode_python = 'python3'
 let g:pymode_rope = 1
+let g:pymode_rope_complete_on_dot = 0
 
 " Minibuf explorer
 let g:miniBufExplMapCTabSwitchBufs = 1
