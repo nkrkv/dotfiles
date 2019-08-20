@@ -54,6 +54,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 
 " Language support
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'leafOfTree/vim-vue-plugin'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
@@ -240,6 +242,9 @@ let g:pymode_rope = 1
 " Minibuf explorer
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
+
+" Vue
+let g:vim_vue_plugin_use_sass = 1
 
 " -------------------------------------
 " NERDTree
