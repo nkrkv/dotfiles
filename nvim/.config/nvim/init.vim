@@ -237,16 +237,23 @@ xmap ia <Plug>SidewaysArgumentTextobjI
 " Plugin settings
 " ===========================================================================
 
+" -------------------------------------
 " Python mode
+" -------------------------------------
 let g:pymode_python = 'python3'
 let g:pymode_rope = 1
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_options_max_line_length = 88 " match Black’s default
 
+" -------------------------------------
 " Minibuf explorer
+" -------------------------------------
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
+" -------------------------------------
 " Vue
+" -------------------------------------
 let g:vim_vue_plugin_use_sass = 1
 
 " -------------------------------------
