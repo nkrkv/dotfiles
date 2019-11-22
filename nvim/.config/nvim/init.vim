@@ -55,6 +55,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 " Language support
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'chrisbra/csv.vim'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
