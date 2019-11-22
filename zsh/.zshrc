@@ -15,7 +15,10 @@ export AMPERKA_RU_THEME_PRODUCTION=1041717
 export AMPERKA_COM_THEME_REVIEW=45725417530
 export AMPERKA_COM_THEME_PRODUCTION=11524898874
 
-alias e=nvim-gtk
+e() {
+    gnome-terminal --quiet -- nvim $@
+}
+
 alias o=xdg-open
 
 DEFAULT_USER=nailxx
