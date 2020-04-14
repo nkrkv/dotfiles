@@ -15,6 +15,7 @@ set tabstop=8
 set scrolloff=5     " keep at minimum few lines from top and bottom when scrolling
 set hidden          " allow moving around and leaving dirty files
 set linebreak       " break on word boundaries if word wrap enabled
+set breakindent     " keep indent level of soft-wrapped lines
 set listchars=eol:$,tab:–→,trail:~,extends:>,precedes:<,nbsp:•
 
 " Ignored listing patterns
@@ -128,6 +129,7 @@ augroup filetype
   au! FileType reason set sw=2 sts=2
   au! FileType html set sw=2 sts=2
   au! FileType cpp set sw=4 sts=4
+  au! FileType tex set sw=2 sts=2 wrap
 augroup end
 
 " ===========================================================================
@@ -292,3 +294,17 @@ let g:airline_section_z = '%P/%L  %3l:%-2c'
 " -------------------------------------
 
 let g:fzf_layout = { 'down': '~20%' }
+
+" -------------------------------------
+" Goyo
+" -------------------------------------
+function! s:goyo_enter()
+    set wrap
+endfunction
+
+function! s:goyo_leave()
+    set nowrap
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
