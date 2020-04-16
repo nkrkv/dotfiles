@@ -91,6 +91,10 @@ Plug 'junegunn/fzf.vim'
 " Distraction-free writing in Vim.
 Plug 'junegunn/goyo.vim'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'  " collection of UltiSnip snippets
+
 call plug#end()
 
 " ===========================================================================
