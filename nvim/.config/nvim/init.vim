@@ -58,6 +58,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'leafOfTree/vim-vue-plugin'
+Plug 'lervag/vimtex'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
@@ -140,7 +141,8 @@ augroup end
 " Shortcuts
 " ===========================================================================
 
-let mapleader = ","     " remap <leader> to comma
+let mapleader = ","       " remap <leader> to comma
+let maplocalleader = ","  " same for <localleader> (used by vimtex, e.g.)
 
 " Remap ex-mode starter to ; as it does not require shift press
 " Keep ; still accessible with Alt hold down
@@ -312,3 +314,51 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" -------------------------------------
+" Vimtex
+" -------------------------------------
+
+" Disable insert-mode mappings: ` should stay ё!
+let g:vimtex_imaps_enabled = 0
+
+" Disable formatting, mainly because of the 80 char hard-wrap
+let g:vimtex_format_enabled = 0
+
+" Do not auto-close on ]] in insert mode, remap to Ctrl+X ]
+let g:vimtex_mappings_disable = {
+      \ 'i': [ ']]' ],
+      \ }
+
+imap <silent><nowait><buffer> <c-x><c-]> <plug>(vimtex-delim-close)
+
+" Some default mappings use <localleader>l as the prefix which conflicts
+" with window navigation. Routinelly remap them to <localleader>t. The code
+" is taken and adjusted from the vimtex source
+
+nmap <silent><nowait><buffer> <localleader>ti <plug>(vimtex-info)
+nmap <silent><nowait><buffer> <localleader>tI <plug>(vimtex-info-full)
+nmap <silent><nowait><buffer> <localleader>tx <plug>(vimtex-reload)
+nmap <silent><nowait><buffer> <localleader>tX <plug>(vimtex-reload-state)
+nmap <silent><nowait><buffer> <localleader>ts <plug>(vimtex-toggle-main)
+nmap <silent><nowait><buffer> <localleader>tq <plug>(vimtex-log)
+
+nmap <silent><nowait><buffer> <localleader>tl <plug>(vimtex-compile)
+nmap <silent><nowait><buffer> <localleader>to <plug>(vimtex-compile-output)
+nmap <silent><nowait><buffer> <localleader>tL <plug>(vimtex-compile-selected)
+xmap <silent><nowait><buffer> <localleader>tL <plug>(vimtex-compile-selected)
+nmap <silent><nowait><buffer> <localleader>tk <plug>(vimtex-stop)
+nmap <silent><nowait><buffer> <localleader>tK <plug>(vimtex-stop-all)
+nmap <silent><nowait><buffer> <localleader>te <plug>(vimtex-errors)
+nmap <silent><nowait><buffer> <localleader>tc <plug>(vimtex-clean)
+nmap <silent><nowait><buffer> <localleader>tC <plug>(vimtex-clean-full)
+nmap <silent><nowait><buffer> <localleader>tg <plug>(vimtex-status)
+nmap <silent><nowait><buffer> <localleader>tG <plug>(vimtex-status-all)
+
+nmap <silent><nowait><buffer> <localleader>tt <plug>(vimtex-toc-open)
+nmap <silent><nowait><buffer> <localleader>tT <plug>(vimtex-toc-toggle)
+
+nmap <silent><nowait><buffer> <localleader>tv <plug>(vimtex-view)
+nmap <silent><nowait><buffer> <localleader>tr <plug>(vimtex-reverse-search)
+
+nmap <silent><nowait><buffer> <localleader>tm <plug>(vimtex-imaps-list)
