@@ -19,7 +19,9 @@ e() {
     gnome-terminal --quiet -- nvim $@
 }
 
-alias o=xdg-open
+o() {
+    xdg-open $@ > /dev/null 2> /dev/null
+}
 
 DEFAULT_USER=nailxx
 COMPLETION_WAITING_DOTS="true"
