@@ -3,7 +3,7 @@
 Managed by GNU Stow. To setup on a new system:
 
 ```bash
-$ yaourt -Sy stow
+$ yay -S stow
 $ git clone git@github.com:nkrkv/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles
 
@@ -12,24 +12,30 @@ $ stow nvim
 # etc ...
 ```
 
-## Terminal fonts
+## ZSH
 
-Required for ZSH.
+The shell & plugins manager:
 
 ```bash
-$ yaourt -Sy powerline-fonts-git awesome-terminal-fonts
+$ yay -S zsh antigen-git
+```
+
+Terminal fonts:
+
+```bash
+$ yay -S powerline-fonts awesome-terminal-fonts
 ```
 
 ## Herbstluft WM
 
 ```bash
-$ yaourt -Sy i3lock gnome-do amixer-utils feh
+$ yay -S i3lock gnome-do amixer-utils feh
 ```
 
 ## BSPWM
 
 ```bash
-$ yaourt -Sy bspwm-git sxhkd compton i3lock amixer-utils ulauncher
+$ yay -S bspwm-git sxhkd compton i3lock amixer-utils ulauncher
 ```
 
 ## NVim
@@ -39,7 +45,7 @@ $ yaourt -Sy bspwm-git sxhkd compton i3lock amixer-utils ulauncher
 This one! https://github.com/daa84/neovim-gtk
 
 ```bash
-$ yaourt -Sy neovim-gtk-git
+$ yay -S neovim-gtk-git
 $ nvim-gtk
 ```
 
@@ -48,8 +54,8 @@ $ nvim-gtk
 Neovim as a language client requires:
 
 ```bash
-$ yaourt -Sy python-neovim python2-neovim
+$ yay -S python-neovim python2-neovim
 $ npm install -g neovim
 ```
 
-ReasonML language server: `npm install -g reason-cli@3.1.0-linux`
+ReasonML language server: `yay -S reason-language-server`
