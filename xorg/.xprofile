@@ -9,3 +9,6 @@ setxkbmap -layout us,ru -option "grp:caps_toggle,lv3:ralt_switch,misc:typo"
 
 # key auto-repeat after 400 ms at 40 Hz
 xset r rate 400 40
+
+# Ask QT5 apps to replicate HiDPI scale settings
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
