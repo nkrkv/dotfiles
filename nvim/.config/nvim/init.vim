@@ -32,6 +32,13 @@ highlight lCursor guifg=NONE guibg=Cyan " подсветка курсора пр
 set autoread
 autocmd FocusGained * :checktime
 
+if exists('g:GtkGuiLoaded')
+  " Using nvim-gtk
+  call rpcnotify(1, 'Gui', 'Font', 'Iosevka 13')
+  " Enable OpenType features
+  call rpcnotify(1, 'Gui', 'FontFeatures', 'PURS, cv17')
+endif
+
 " ===========================================================================
 " Plugins
 " ===========================================================================
