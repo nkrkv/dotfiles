@@ -284,12 +284,15 @@ let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__',
 let NERDTreeMinimalUI=1
 
 " -------------------------------------
-" Language server start commands
+" Language client
 " -------------------------------------
 
 let g:LanguageClient_serverCommands = {
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ 'reason': ['reason-language-server'],
+    \ }
+
+let g:LanguageClient_rootMarkers = {
+    \ 'reason': ['bsconfig.json'],
     \ }
 
 " -------------------------------------
