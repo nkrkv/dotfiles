@@ -280,7 +280,7 @@ let g:vim_vue_plugin_use_sass = 1
 " the latter split at the to edge
 nmap <silent> <leader>n :NERDTreeToggle <BAR> :MBEOpen!<CR>
 
-let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '\.aux$', '\.pdf$', '__pycache__', 'tags']
+let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__', 'tags', '\.bs.js$']
 let NERDTreeMinimalUI=1
 
 " -------------------------------------
