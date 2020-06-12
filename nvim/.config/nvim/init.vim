@@ -112,6 +112,7 @@ call plug#end()
 colorscheme one
 set background=dark
 set termguicolors
+highlight SignColumn guibg=#2c323c
 
 " ===========================================================================
 " Filetypes
@@ -294,6 +295,16 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_rootMarkers = {
     \ 'reason': ['bsconfig.json'],
     \ }
+
+let g:LanguageClient_useVirtualText = 'No'
+
+augroup LanguageClient_config
+    autocmd!
+    " Avoid buffer jerking left-right on error appear/disappear:
+    " just always show the signcolumn gutter when LC works
+    autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStopped setlocal signcolumn=auto
+augroup END
 
 " -------------------------------------
 " AirLine
