@@ -139,7 +139,7 @@ augroup filetype
   au! FileType javascript set sw=2 sts=2
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
-  au! FileType reason set sw=2 sts=2
+  au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
   au! FileType html set sw=2 sts=2
   au! FileType cpp set sw=4 sts=4
   au! FileType tex set sw=2 sts=2 wrap
@@ -285,7 +285,7 @@ let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__',
 let NERDTreeMinimalUI=1
 
 " -------------------------------------
-" Language client
+" LanguageClient
 " -------------------------------------
 
 let g:LanguageClient_serverCommands = {
@@ -296,15 +296,8 @@ let g:LanguageClient_rootMarkers = {
     \ 'reason': ['bsconfig.json'],
     \ }
 
+let g:LanguageClient_diagnosticsList = 'Disabled'
 let g:LanguageClient_useVirtualText = 'No'
-
-augroup LanguageClient_config
-    autocmd!
-    " Avoid buffer jerking left-right on error appear/disappear:
-    " just always show the signcolumn gutter when LC works
-    autocmd User LanguageClientStarted setlocal signcolumn=yes
-    autocmd User LanguageClientStopped setlocal signcolumn=auto
-augroup END
 
 " -------------------------------------
 " AirLine
