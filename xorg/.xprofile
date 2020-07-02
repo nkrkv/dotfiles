@@ -7,5 +7,10 @@ xset -b
 # * Use right alt to type the extra typographic chars (lv3:ralt_switch)
 setxkbmap -layout us,ru -option "grp:caps_toggle,lv3:ralt_switch,misc:typo"
 
+# Make numpad DEL print a dot instead of comma for RU layout.
+# Made as hack because the `kpdl` option is only applied to the first layout.
+# See: https://gitlab.freedesktop.org/xorg/xserver/issues/653
+setxkbmap -symbols '+kpdl(dotoss):2'
+
 # key auto-repeat after 400 ms at 40 Hz
 xset r rate 400 40
