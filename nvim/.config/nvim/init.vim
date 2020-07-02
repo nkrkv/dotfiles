@@ -15,6 +15,7 @@ set tabstop=8
 set scrolloff=5     " keep at minimum few lines from top and bottom when scrolling
 set hidden          " allow moving around and leaving dirty files
 set linebreak       " break on word boundaries if word wrap enabled
+set showbreak=---⤶  " line break sequence
 set listchars=eol:$,tab:–→,trail:~,extends:>,precedes:<,nbsp:•
 
 " Ignored listing patterns
