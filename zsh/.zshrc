@@ -19,7 +19,9 @@ e() {
     gnome-terminal --quiet -- nvim $@
 }
 
-alias o=xdg-open
+o() {
+    xdg-open $@ > /dev/null 2> /dev/null
+}
 
 DEFAULT_USER=nailxx
 COMPLETION_WAITING_DOTS="true"
@@ -45,6 +47,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
 export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
 antigen bundle lukechilds/zsh-nvm
 
 antigen bundle davidparsson/zsh-pyenv-lazy

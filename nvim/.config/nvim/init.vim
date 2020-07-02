@@ -16,6 +16,7 @@ set scrolloff=5     " keep at minimum few lines from top and bottom when scrolli
 set hidden          " allow moving around and leaving dirty files
 set linebreak       " break on word boundaries if word wrap enabled
 set showbreak=---⤶  " line break sequence
+set breakindent     " keep indent level of soft-wrapped lines
 set listchars=eol:$,tab:–→,trail:~,extends:>,precedes:<,nbsp:•
 
 " Ignored listing patterns
@@ -31,6 +32,13 @@ highlight lCursor guifg=NONE guibg=Cyan " подсветка курсора пр
 " Auto-reload files when changed outside of the editor
 set autoread
 autocmd FocusGained * :checktime
+
+if exists('g:GtkGuiLoaded')
+  " Using nvim-gtk
+  call rpcnotify(1, 'Gui', 'Font', 'Iosevka 13')
+  " Enable OpenType features
+  call rpcnotify(1, 'Gui', 'FontFeatures', 'PURS, cv17')
+endif
 
 " ===========================================================================
 " Plugins
@@ -58,6 +66,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'leafOfTree/vim-vue-plugin'
+Plug 'lervag/vimtex'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
@@ -91,6 +100,10 @@ Plug 'junegunn/fzf.vim'
 " Distraction-free writing in Vim.
 Plug 'junegunn/goyo.vim'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'  " collection of UltiSnip snippets
+
 call plug#end()
 
 " ===========================================================================
@@ -100,6 +113,7 @@ call plug#end()
 colorscheme one
 set background=dark
 set termguicolors
+highlight SignColumn guibg=#2c323c
 
 " ===========================================================================
 " Filetypes
@@ -128,16 +142,18 @@ augroup filetype
   au! FileType javascript set sw=2 sts=2
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
-  au! FileType reason set sw=2 sts=2
+  au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
   au! FileType html set sw=2 sts=2
   au! FileType cpp set sw=4 sts=4
+  au! FileType tex set sw=2 sts=2 wrap
 augroup end
 
 " ===========================================================================
 " Shortcuts
 " ===========================================================================
 
-let mapleader = ","     " remap <leader> to comma
+let mapleader = ","       " remap <leader> to comma
+let maplocalleader = ","  " same for <localleader> (used by vimtex, e.g.)
 
 " Remap ex-mode starter to ; as it does not require shift press
 " Keep ; still accessible with Alt hold down
@@ -268,17 +284,23 @@ let g:vim_vue_plugin_use_sass = 1
 " the latter split at the to edge
 nmap <silent> <leader>n :NERDTreeToggle <BAR> :MBEOpen!<CR>
 
-let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '\.sqlite$', '\.aux$', '\.pdf$', '__pycache__', 'tags']
+let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__', 'tags', '\.bs.js$']
 let NERDTreeMinimalUI=1
 
 " -------------------------------------
-" Language server start commands
+" LanguageClient
 " -------------------------------------
 
 let g:LanguageClient_serverCommands = {
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ 'reason': ['reason-language-server'],
     \ }
+
+let g:LanguageClient_rootMarkers = {
+    \ 'reason': ['bsconfig.json'],
+    \ }
+
+let g:LanguageClient_diagnosticsList = 'Disabled'
+let g:LanguageClient_useVirtualText = 'No'
 
 " -------------------------------------
 " AirLine
@@ -295,3 +317,65 @@ let g:airline_section_z = '%P/%L  %3l:%-2c'
 " -------------------------------------
 
 let g:fzf_layout = { 'down': '~20%' }
+
+" -------------------------------------
+" Goyo
+" -------------------------------------
+function! s:goyo_enter()
+    set wrap
+endfunction
+
+function! s:goyo_leave()
+    set nowrap
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" -------------------------------------
+" Vimtex
+" -------------------------------------
+
+" Disable insert-mode mappings: ` should stay ё!
+let g:vimtex_imaps_enabled = 0
+
+" Disable formatting, mainly because of the 80 char hard-wrap
+let g:vimtex_format_enabled = 0
+
+" Do not auto-close on ]] in insert mode, remap to Ctrl+X ]
+let g:vimtex_mappings_disable = {
+      \ 'i': [ ']]' ],
+      \ }
+
+imap <silent><nowait><buffer> <c-x><c-]> <plug>(vimtex-delim-close)
+
+" Some default mappings use <localleader>l as the prefix which conflicts
+" with window navigation. Routinelly remap them to <localleader>t. The code
+" is taken and adjusted from the vimtex source
+
+nmap <silent><nowait><buffer> <localleader>ti <plug>(vimtex-info)
+nmap <silent><nowait><buffer> <localleader>tI <plug>(vimtex-info-full)
+nmap <silent><nowait><buffer> <localleader>tx <plug>(vimtex-reload)
+nmap <silent><nowait><buffer> <localleader>tX <plug>(vimtex-reload-state)
+nmap <silent><nowait><buffer> <localleader>ts <plug>(vimtex-toggle-main)
+nmap <silent><nowait><buffer> <localleader>tq <plug>(vimtex-log)
+
+nmap <silent><nowait><buffer> <localleader>tl <plug>(vimtex-compile)
+nmap <silent><nowait><buffer> <localleader>to <plug>(vimtex-compile-output)
+nmap <silent><nowait><buffer> <localleader>tL <plug>(vimtex-compile-selected)
+xmap <silent><nowait><buffer> <localleader>tL <plug>(vimtex-compile-selected)
+nmap <silent><nowait><buffer> <localleader>tk <plug>(vimtex-stop)
+nmap <silent><nowait><buffer> <localleader>tK <plug>(vimtex-stop-all)
+nmap <silent><nowait><buffer> <localleader>te <plug>(vimtex-errors)
+nmap <silent><nowait><buffer> <localleader>tc <plug>(vimtex-clean)
+nmap <silent><nowait><buffer> <localleader>tC <plug>(vimtex-clean-full)
+nmap <silent><nowait><buffer> <localleader>tg <plug>(vimtex-status)
+nmap <silent><nowait><buffer> <localleader>tG <plug>(vimtex-status-all)
+
+nmap <silent><nowait><buffer> <localleader>tt <plug>(vimtex-toc-open)
+nmap <silent><nowait><buffer> <localleader>tT <plug>(vimtex-toc-toggle)
+
+nmap <silent><nowait><buffer> <localleader>tv <plug>(vimtex-view)
+nmap <silent><nowait><buffer> <localleader>tr <plug>(vimtex-reverse-search)
+
+nmap <silent><nowait><buffer> <localleader>tm <plug>(vimtex-imaps-list)
