@@ -119,6 +119,8 @@ augroup filetype
   au! BufRead,BufNewFile *.scons setfiletype python
   au! BufRead,BufNewFile wscript setfiletype python
   au! BufRead,BufNewFile *.less setfiletype less
+  au! BufRead,BufNewFile *.svelte setfiletype html
+  au! BufRead,BufNewFile *.pcss setfiletype css
 augroup end
 
 " Custom settings for file types
