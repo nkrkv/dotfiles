@@ -15,6 +15,7 @@ set tabstop=8
 set scrolloff=5     " keep at minimum few lines from top and bottom when scrolling
 set hidden          " allow moving around and leaving dirty files
 set linebreak       " break on word boundaries if word wrap enabled
+set showbreak=---⤶  " line break sequence
 set breakindent     " keep indent level of soft-wrapped lines
 set listchars=eol:$,tab:–→,trail:~,extends:>,precedes:<,nbsp:•
 
@@ -132,6 +133,8 @@ augroup filetype
   au! BufRead,BufNewFile *.scons setfiletype python
   au! BufRead,BufNewFile wscript setfiletype python
   au! BufRead,BufNewFile *.less setfiletype less
+  au! BufRead,BufNewFile *.svelte setfiletype html
+  au! BufRead,BufNewFile *.pcss setfiletype css
 augroup end
 
 " Custom settings for file types
