@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# i3lock with blur background using ffmpeg for blur rather
+# than ImageMagick because the latter is slow on HiDPI
+# See: https://github.com/petvas/i3lock-blur
+
+TMPBG=/tmp/i3lock.png
+RESOLUTION=$(xrandr | grep 'current' | sed -E 's/.*current\s([0-9]+)\sx\s([0-9]+).*/\1x\2/')
+ 
+ffmpeg \
+    -f x11grab \
+    -video_size $RESOLUTION \
+    -i $DISPLAY \
+    -filter_complex "boxblur=25:1" \
+    -vframes 1 \
+    $TMPBG \
+    -loglevel quiet
+
+i3lock -i $TMPBG
+rm -f $TMPBG

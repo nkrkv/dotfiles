@@ -3,6 +3,9 @@
 LAUNCHER="rofi -show drun -modi drun -show-icons"
 WINDOW_FIND="rofi -show window -modi window -show-icons"
 LOCK_SCREEN=$(dirname "$0")/lock
+BROWSER=firefox
+FILES=nemo
+TERMINAL=xfce4-terminal
 
 #=======================================================================
 # Startup / reset / reload
@@ -54,7 +57,7 @@ hc set smart_frame_surroundings 1
 hc set window_gap 0
 hc set smart_window_surroundings 0
 hc set mouse_recenter_gap 0
-hc set default_frame_layout 3 # grid
+hc set default_frame_layout 2 # max
 
 hc attr theme.active.color '#9fbc00'
 hc attr theme.normal.color '#454545'
@@ -87,11 +90,13 @@ hc keybind Alt-Control-r       reload
 hc keybind Alt-Control-Delete  quit
 
 # Run/close
-hc keybind Super-w       close_or_remove
-hc keybind Super-d       close_or_remove
-hc keybind Super-q       close_and_remove
+hc keybind Super-q       close_or_remove
+hc keybind Super-Shift-q close_and_remove
 hc keybind Super-Return  spawn ${LAUNCHER}
 hc keybind Super-slash   spawn ${WINDOW_FIND}
+hc keybind Super-b       spawn ${BROWSER}
+hc keybind Super-t       spawn ${TERMINAL}
+hc keybind Super-f       spawn ${FILES}
 
 # Focusing clients
 hc keybind Super-h focus  left
@@ -114,16 +119,16 @@ hc keybind Super-e  split explode
 resizestep=0.05
 hc keybind Super-comma   resize left +$resizestep
 hc keybind Super-period  resize right +$resizestep
-hc keybind Super-equal   resize up +$resizestep
-hc keybind Super-minus   resize down +$resizestep
+hc keybind Super-equal   resize down +$resizestep
+hc keybind Super-minus   resize up +$resizestep
 
 # Tags
 tag_names=( {1..9} )
 tag_keys=( {1..9} 0 )
 
-# use grid layout on the default workspace which already existed before
+# use max layout on the default workspace which already existed before
 # setting `default_frame_layout`
-hc load default "(clients grid:0)" || true
+hc load default "(clients max:0)" || true
 hc rename default "${tag_names[0]}" || true
 for i in ${!tag_names[@]} ; do
     hc add "${tag_names[$i]}"
@@ -137,12 +142,14 @@ done
 # Cycle through tags
 hc keybind Alt-Control-Down use_index +1 --skip-visible
 hc keybind Alt-Control-Up   use_index -1 --skip-visible
+hc keybind Super-Control-Down use_index +1 --skip-visible
+hc keybind Super-Control-Up   use_index -1 --skip-visible
 
 # Layouting
 hc keybind Super-Shift-p  pseudotile toggle
 hc keybind Super-space    cycle_layout +1 vertical horizontal
 hc keybind Super-s        floating toggle
-hc keybind Super-f        fullscreen toggle
+hc keybind Super-0        fullscreen toggle
 hc keybind Super-m        set_layout max
 hc keybind Super-g        set_layout grid
 
