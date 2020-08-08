@@ -11,6 +11,7 @@
 [alias]
 	st = status
 	sw = switch
+	swm = switch master
 	co = checkout
 	ci = commit
 	ff = pull --ff-only
