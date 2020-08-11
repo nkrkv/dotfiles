@@ -7,6 +7,10 @@ BROWSER=firefox
 FILES=nemo
 TERMINAL=xfce4-terminal
 
+COLOR_ACTIVE='#9fbc00'
+COLOR_NORMAL='#565656'
+BORDER_WIDTH=4
+
 #=======================================================================
 # Startup / reset / reload
 #=======================================================================
@@ -30,7 +34,6 @@ hc lock
 hc emit_hook reload
 hc keyunbind --all
 hc mouseunbind --all
-hc detect_monitors
 
 #=======================================================================
 # Theme and WM settings
@@ -39,41 +42,39 @@ hc detect_monitors
 xsetroot -solid '#222222' # fallback if no wallpaper
 feh --bg-scale $HOME/Pictures/wallpaper.{png,jpg}
 
-hc attr theme.tiling.reset 1
-hc attr theme.floating.reset 1
+hc attr settings.auto_detect_monitors true
+hc attr settings.auto_detect_panels true
+hc attr settings.focus_follows_mouse true
+hc attr settings.tree_style "╾│ ├└╼─┐"
 
-hc set frame_border_active_color '#222222'
-hc set frame_border_normal_color '#101010'
-hc set frame_bg_normal_color '#565656'
-hc set frame_bg_active_color '#9fbc00'
-hc set frame_border_width 1
-hc set always_show_frame 1
-hc set frame_bg_transparent 1
-hc set frame_transparent_width 10
-hc set frame_gap 4
-hc set frame_padding 0
-hc set smart_frame_surroundings 1
+hc attr settings.default_frame_layout 2 # max
 
-hc set window_gap 0
-hc set smart_window_surroundings 0
-hc set mouse_recenter_gap 0
-hc set default_frame_layout 2 # max
+# Frame setup
+hc attr settings.always_show_frame true
+hc attr settings.frame_bg_active_color $COLOR_ACTIVE
+hc attr settings.frame_bg_normal_color $COLOR_NORMAL
+hc attr settings.frame_bg_transparent true
+hc attr settings.frame_border_width 0
+hc attr settings.frame_gap $BORDER_WIDTH
+hc attr settings.frame_transparent_width $BORDER_WIDTH
 
-hc attr theme.active.color '#9fbc00'
-hc attr theme.normal.color '#454545'
-hc attr theme.urgent.color orange
-hc attr theme.inner_width 1
-hc attr theme.inner_color black
-hc attr theme.border_width 5
-hc attr theme.floating.border_width 4
-hc attr theme.floating.outer_width 1
-hc attr theme.floating.outer_color black
-hc attr theme.active.inner_color '#3E4A00'
-hc attr theme.active.outer_color '#3E4A00'
-hc attr theme.background_color '#141414'
+# Do not hide surroundings even if no ambiguity
+hc attr settings.smart_frame_surroundings false
+hc attr settings.smart_window_surroundings false
 
-hc set focus_follows_mouse 1
-hc set tree_style '╾│ ├└╼─┐'
+# Resize window content immediately during resizing it with the mouse
+hc attr settings.update_dragged_clients true
+
+# Full-reset theme
+hc attr theme.reset 1
+
+# Setup theme
+hc attr theme.border_width $BORDER_WIDTH
+hc attr theme.floating.border_width $((BORDER_WIDTH / 2))
+
+hc attr theme.color $COLOR_NORMAL
+hc attr theme.active.color $COLOR_ACTIVE
+hc attr theme.urgent.color '#fd4000'
 
 #=======================================================================
 # Key bindings
@@ -91,7 +92,6 @@ hc keybind Alt-Control-Delete  quit
 
 # Run/close
 hc keybind Super-q       close_or_remove
-hc keybind Super-Shift-q close_and_remove
 hc keybind Super-Return  spawn ${LAUNCHER}
 hc keybind Super-slash   spawn ${WINDOW_FIND}
 hc keybind Super-b       spawn ${BROWSER}
@@ -116,9 +116,11 @@ hc keybind Super-o  chain - split right 0.5 - focus right
 hc keybind Super-e  split explode
 
 # Resizing frames
-resizestep=0.05
+resizestep=0.02
 hc keybind Super-comma   resize left +$resizestep
-hc keybind Super-period  resize right +$resizestep
+hc keybind Super-period  resize left -$resizestep
+hc keybind Super-Alt-comma   resize right -$resizestep
+hc keybind Super-Alt-period  resize right +$resizestep
 hc keybind Super-equal   resize down +$resizestep
 hc keybind Super-minus   resize up +$resizestep
 
@@ -140,8 +142,8 @@ for i in ${!tag_names[@]} ; do
 done
 
 # Cycle through tags
-hc keybind Alt-Control-Down use_index +1 --skip-visible
-hc keybind Alt-Control-Up   use_index -1 --skip-visible
+hc keybind Alt-Control-Down   use_index +1 --skip-visible
+hc keybind Alt-Control-Up     use_index -1 --skip-visible
 hc keybind Super-Control-Down use_index +1 --skip-visible
 hc keybind Super-Control-Up   use_index -1 --skip-visible
 
