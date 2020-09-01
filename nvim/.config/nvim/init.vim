@@ -35,7 +35,7 @@ autocmd FocusGained * :checktime
 
 if exists('g:GtkGuiLoaded')
   " Using nvim-gtk
-  call rpcnotify(1, 'Gui', 'Font', 'Iosevka 13')
+  call rpcnotify(1, 'Gui', 'Font', 'Iosevka Regular 12')
   " Enable OpenType features
   call rpcnotify(1, 'Gui', 'FontFeatures', 'PURS, cv17')
 endif
