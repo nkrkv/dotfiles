@@ -79,6 +79,7 @@ Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 
 " Editing
 Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
+Plug 'bkad/CamelCaseMotion' " camelAndSnake_case_Motions
 Plug 'junegunn/goyo.vim' " distraction-free writing
 Plug 'scrooloose/nerdcommenter' " comment blocks
 Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
@@ -252,6 +253,14 @@ omap aa <Plug>SidewaysArgumentTextobjA
 xmap aa <Plug>SidewaysArgumentTextobjA
 omap ia <Plug>SidewaysArgumentTextobjI
 xmap ia <Plug>SidewaysArgumentTextobjI
+
+" InnerCamels
+omap <silent> ic <Plug>CamelCaseMotion_iw
+xmap <silent> ic <Plug>CamelCaseMotion_iw
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
 
 " ===========================================================================
 " Plugin settings
