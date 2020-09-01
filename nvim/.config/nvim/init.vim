@@ -335,6 +335,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " -------------------------------------
 " Vimtex
 " -------------------------------------
+let g:tex_flavor = 'latex'
 
 " Disable insert-mode mappings: ` should stay ё!
 let g:vimtex_imaps_enabled = 0
