@@ -19,6 +19,10 @@ BORDER_WIDTH=4
 pkill -u $USER -x 'compton'
 compton &
 
+# Per-client keyboard layout switcher
+pkill -u $USER --full hlwm_perclient_kb_layout
+$(dirname "$0")/hlwm_perclient_kb_layout &
+
 # Herbstluft WM
 
 # kill dangling clients (e.g., for the panel)
