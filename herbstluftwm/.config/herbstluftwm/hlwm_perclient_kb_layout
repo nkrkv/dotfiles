@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+if ! command -v xkblayout-state &> /dev/null
+then
+    echo >&2 "$0 requires xkblayout-state to be on \$PATH";
+    echo >&2 "Grab it from: https://github.com/nonpop/xkblayout-state";
+    echo >&2 "BTW, if using Arch: https://aur.archlinux.org/packages/xkblayout-state-git/";
+    exit 1;
+fi
+
+hc() {
+    herbstclient "$@"
+}
+
+FOCUS_WINID=$(hc attr clients.focus.winid)
+
+hc --idle focus_changed | while read hook winid name
+do
+    # Save current keyboard layout for window loosing focus
+    hc silent new_attr int clients.${FOCUS_WINID}.my_kb_layout || true;
+    hc silent attr clients.${FOCUS_WINID}.my_kb_layout $(xkblayout-state print "%c");
+
+    # Save the currently focused win id to be able referring it as the one loosing focus
+    FOCUS_WINID=$winid
+
+    # Restore previously stored layout.
+    # Fallback to the default (0'th) if the window is new and so has no stored attribute.
+    # Redirect stderr to /dev/null to suppress:
+    #     Object "clients.focus" has no attribute "my_kb_layout"
+    # ..in this case
+    xkblayout-state set $(hc attr clients.focus.my_kb_layout 2>/dev/null || echo 0);
+done;

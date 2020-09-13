@@ -69,7 +69,7 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-font = 1
 
-label-layout = %layout%
+label-layout = %name:0:2%
 
 label-indicator-padding = 2
 label-indicator-margin = 1

@@ -35,7 +35,7 @@ autocmd FocusGained * :checktime
 
 if exists('g:GtkGuiLoaded')
   " Using nvim-gtk
-  call rpcnotify(1, 'Gui', 'Font', 'Iosevka 13')
+  call rpcnotify(1, 'Gui', 'Font', 'Iosevka Regular 12')
   " Enable OpenType features
   call rpcnotify(1, 'Gui', 'FontFeatures', 'PURS, cv17')
 endif
@@ -79,6 +79,7 @@ Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 
 " Editing
 Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
+Plug 'bkad/CamelCaseMotion' " camelAndSnake_case_Motions
 Plug 'junegunn/goyo.vim' " distraction-free writing
 Plug 'scrooloose/nerdcommenter' " comment blocks
 Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
@@ -253,6 +254,14 @@ xmap aa <Plug>SidewaysArgumentTextobjA
 omap ia <Plug>SidewaysArgumentTextobjI
 xmap ia <Plug>SidewaysArgumentTextobjI
 
+" InnerCamels
+omap <silent> ic <Plug>CamelCaseMotion_iw
+xmap <silent> ic <Plug>CamelCaseMotion_iw
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
+
 " ===========================================================================
 " Plugin settings
 " ===========================================================================
@@ -336,6 +345,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " -------------------------------------
 " Vimtex
 " -------------------------------------
+let g:tex_flavor = 'latex'
 
 " Disable insert-mode mappings: ` should stay ё!
 let g:vimtex_imaps_enabled = 0
