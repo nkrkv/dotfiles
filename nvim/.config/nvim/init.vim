@@ -281,8 +281,9 @@ let g:vim_vue_plugin_use_sass = 1
 " -------------------------------------
 
 " Shortcut to open immediatelly followed be MiniBufExplorer reopen to keep
-" the latter split at the to edge
-nmap <silent> <leader>n :NERDTreeToggle <BAR> :MBEOpen!<CR>
+" the latter split at the top edge
+nmap <silent> <leader>nn :NERDTreeToggle <BAR> :MBEOpen!<CR>
+nmap <silent> <leader>nf :NERDTreeFind<CR>
 
 let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__', 'tags', '\.bs.js$']
 let NERDTreeMinimalUI=1
