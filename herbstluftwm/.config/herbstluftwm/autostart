@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+COMPOSITOR=picom
 LAUNCHER="rofi -show drun -modi drun -show-icons"
 WINDOW_FIND="rofi -show window -modi window -show-icons"
 LOCK_SCREEN=$(dirname "$0")/lock
@@ -15,9 +16,9 @@ BORDER_WIDTH=4
 # Startup / reset / reload
 #=======================================================================
 
-# Composer
-pkill -u $USER -x 'compton'
-compton &
+# Compositor
+pkill -u $USER -x $COMPOSITOR
+$COMPOSITOR &
 
 # Per-client keyboard layout switcher
 pkill -u $USER --full hlwm_perclient_kb_layout
