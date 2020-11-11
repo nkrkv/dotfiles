@@ -97,6 +97,7 @@ Plug 'jremmen/vim-ripgrep' " :Rg
 Plug 'moll/vim-bbye' " bdelete
 
 Plug '/usr/bin/fzf' " FZF relies on the global fzf tool installation
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Distraction-free writing in Vim.
