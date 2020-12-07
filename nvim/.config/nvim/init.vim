@@ -66,12 +66,13 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'leafOfTree/vim-vue-plugin'
+Plug 'leafgarland/typescript-vim'
 Plug 'lervag/vimtex'
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty' " JSX
 Plug 'othree/html5.vim'
-Plug 'othree/yajs.vim'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'tpope/vim-liquid'
+Plug 'yuezk/vim-js' " JavaScript
 
 " Python
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
@@ -96,6 +97,7 @@ Plug 'jremmen/vim-ripgrep' " :Rg
 Plug 'moll/vim-bbye' " bdelete
 
 Plug '/usr/bin/fzf' " FZF relies on the global fzf tool installation
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Distraction-free writing in Vim.
@@ -141,6 +143,7 @@ augroup end
 " Custom settings for file types
 augroup filetype
   au! FileType javascript set sw=2 sts=2
+  au! FileType javascript.jsx set sw=2 sts=2
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
   au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
