@@ -85,6 +85,9 @@ hc attr theme.urgent.color '#fd4000'
 # Key bindings
 #=======================================================================
 
+# For key names definitions see:
+# https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
+
 # Media
 hc keybind XF86AudioLowerVolume  spawn amixer -q set Master 2%- unmute
 hc keybind XF86AudioRaiseVolume  spawn amixer -q set Master 2%+ unmute
@@ -116,9 +119,19 @@ hc keybind Super-Shift-k  shift up
 hc keybind Super-Shift-l  shift right
 
 # Splitting frames
+hc keybind Super-e  split explode
 hc keybind Super-u  chain - split bottom 0.5 - focus bottom
 hc keybind Super-o  chain - split right 0.5 - focus right
-hc keybind Super-e  split explode
+
+hc keybind Super-Shift-o chain \
+    - split right 0.33 \
+    - focus right \
+    - split right 0.5
+
+hc keybind Super-Shift-backslash chain \
+    .-. focus_edge -e right \
+    .-. split right 0.65 \
+    .-. focus right
 
 # Resizing frames
 resizestep=0.02
