@@ -7,6 +7,7 @@ LOCK_SCREEN=$(dirname "$0")/lock
 BROWSER=firefox
 FILES=nemo
 TERMINAL=xfce4-terminal
+CALCULATOR="rofi -show calc -modi calc -no-show-match -no-sort"
 
 COLOR_ACTIVE='#9fbc00'
 COLOR_NORMAL='#565656'
@@ -105,6 +106,7 @@ hc keybind Super-slash   spawn ${WINDOW_FIND}
 hc keybind Super-b       spawn ${BROWSER}
 hc keybind Super-t       spawn ${TERMINAL}
 hc keybind Super-f       spawn ${FILES}
+hc keybind Super-c       spawn ${CALCULATOR}
 
 # Focusing clients
 hc keybind Super-h focus  left
