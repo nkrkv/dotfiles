@@ -13,7 +13,7 @@ herbstclient --idle "tag_*" 2>/dev/null | {
                     '#')
                         # the tag is viewed on the focused monitor
                         # Underline with green
-                        echo "%{u#9fbc00}"
+                        echo "%{u#9fbc00}%{+u}"
                         ;;
                     ':')
                         # : the tag is not empty
