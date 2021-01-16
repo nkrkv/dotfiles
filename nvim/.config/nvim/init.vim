@@ -143,7 +143,7 @@ augroup end
 " Custom settings for file types
 augroup filetype
   au! FileType javascript set sw=2 sts=2
-  au! FileType javascript.jsx set sw=2 sts=2
+  au! FileType javascriptreact set sw=2 sts=2
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
   au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
