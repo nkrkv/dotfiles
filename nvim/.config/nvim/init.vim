@@ -313,7 +313,7 @@ let g:LanguageClient_rootMarkers = {
     \ 'reason': ['bsconfig.json'],
     \ }
 
-let g:LanguageClient_diagnosticsList = 'Disabled'
+let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_useVirtualText = 'No'
 
 " -------------------------------------
