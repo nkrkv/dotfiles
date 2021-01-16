@@ -240,6 +240,7 @@ nnoremap <m--> <c-w>5-
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> ]r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> g= :call LanguageClient#textDocument_formatting()<CR>
 
 " -------------------------------------
 " Fuzzy find
