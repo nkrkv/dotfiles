@@ -71,6 +71,7 @@ Plug 'lervag/vimtex'
 Plug 'maxmellon/vim-jsx-pretty' " JSX
 Plug 'othree/html5.vim'
 Plug 'reasonml-editor/vim-reason-plus'
+Plug 'rescript-lang/vim-rescript', {'branch': 'fix-cwd'}
 Plug 'tpope/vim-liquid'
 Plug 'yuezk/vim-js' " JavaScript
 
@@ -147,9 +148,17 @@ augroup filetype
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
   au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
+  au! FileType rescript setlocal sw=2 sts=2 signcolumn=yes
   au! FileType html set sw=2 sts=2
   au! FileType cpp set sw=4 sts=4
   au! FileType tex set sw=2 sts=2 wrap
+augroup end
+
+" ReScript custom
+augroup filetype
+  au! FileType rescript nnoremap <silent> <buffer> g= :RescriptFormat<CR>
+  au! FileType rescript nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
+  au! FileType rescript set omnifunc=rescript#Complete
 augroup end
 
 " ===========================================================================
