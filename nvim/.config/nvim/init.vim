@@ -143,7 +143,7 @@ augroup end
 " Custom settings for file types
 augroup filetype
   au! FileType javascript set sw=2 sts=2
-  au! FileType javascript.jsx set sw=2 sts=2
+  au! FileType javascriptreact set sw=2 sts=2
   au! FileType json set sw=2 sts=2
   au! FileType yaml set sw=2 sts=2
   au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
@@ -240,6 +240,7 @@ nnoremap <m--> <c-w>5-
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> ]r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> g= :call LanguageClient#textDocument_formatting()<CR>
 
 " -------------------------------------
 " Fuzzy find
@@ -312,7 +313,7 @@ let g:LanguageClient_rootMarkers = {
     \ 'reason': ['bsconfig.json'],
     \ }
 
-let g:LanguageClient_diagnosticsList = 'Disabled'
+let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_useVirtualText = 'No'
 
 " -------------------------------------
