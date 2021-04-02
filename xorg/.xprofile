@@ -18,12 +18,13 @@ xset r rate 400 40
 # Activate Num Lock
 [ -x /usr/bin/numlockx ] && /usr/bin/numlockx on
 
-# Ask QT5 apps to replicate HiDPI scale settings
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
-
-# Scale GTK icons and UI up
-export GDK_SCALE=2
-# ... and counter-scale text
-export GDK_DPI_SCALE=0.5
+if [ -f ~/.hdpi ]; then
+    # Ask QT5 apps to replicate HiDPI scale settings
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    # Scale GTK icons and UI up
+    export GDK_SCALE=2
+    # ... and counter-scale text
+    export GDK_DPI_SCALE=0.5
+fi
 
 [ "$XDG_SESSION_DESKTOP" = "herbstluftwm" ] && dex --autostart --environment herbstluftwm
