@@ -203,6 +203,14 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 # Panel
 #=======================================================================
 
+if [[ -f ~/.hdpi ]]; then
+    export POLYBAR_HEIGHT=66
+    export POLYBAR_DPI=192
+else
+    export POLYBAR_HEIGHT=33
+    export POLYBAR_DPI=96
+fi
+
 pkill -u $USER 'polybar'
 polybar 'top' &
 
