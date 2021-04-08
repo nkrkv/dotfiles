@@ -71,7 +71,7 @@ Plug 'lervag/vimtex'
 Plug 'maxmellon/vim-jsx-pretty' " JSX
 Plug 'othree/html5.vim'
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'rescript-lang/vim-rescript', {'branch': 'fix-cwd'}
+Plug 'rescript-lang/vim-rescript', {'tag': 'v1.4.0'}
 Plug 'tpope/vim-liquid'
 Plug 'yuezk/vim-js' " JavaScript
 
