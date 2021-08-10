@@ -60,6 +60,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 " LSP
 Plug 'neovim/nvim-lspconfig'
 
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Then install languages of choice, e.g:
+" :TSInstall javascript
+
 " Language support
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
@@ -112,10 +117,9 @@ call plug#end()
 " Colors
 " ===========================================================================
 
-colorscheme one
 set background=dark
 set termguicolors
-highlight SignColumn guibg=#2c323c
+colorscheme one
 
 " ===========================================================================
 " Filetypes
@@ -256,6 +260,24 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 omap <silent> ib <Plug>CamelCaseMotion_ib
 xmap <silent> ib <Plug>CamelCaseMotion_ib
+
+" ===========================================================================
+" Treesitter
+" ===========================================================================
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "javascript" },
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 " ===========================================================================
 " LSP
