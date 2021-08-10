@@ -57,10 +57,8 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" LSP
+Plug 'neovim/nvim-lspconfig'
 
 " Language support
 Plug 'cakebaker/scss-syntax.vim'
@@ -71,7 +69,7 @@ Plug 'lervag/vimtex'
 Plug 'maxmellon/vim-jsx-pretty' " JSX
 Plug 'othree/html5.vim'
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'rescript-lang/vim-rescript', {'tag': 'v1.4.0'}
+Plug 'rescript-lang/vim-rescript'
 Plug 'tpope/vim-liquid'
 Plug 'yuezk/vim-js' " JavaScript
 
@@ -127,7 +125,7 @@ highlight SignColumn guibg=#2c323c
 autocmd FileType text setlocal textwidth=78
 
 " Enable custom syntax highlight
-augroup filetype
+augroup ftmapping
   au! BufRead,BufNewFile *.xod* setfiletype json
   au! BufRead,BufNewFile *.ino setfiletype cpp
   au! BufRead,BufNewFile *.json5 setfiletype javascript
@@ -142,23 +140,22 @@ augroup filetype
 augroup end
 
 " Custom settings for file types
-augroup filetype
-  au! FileType javascript set sw=2 sts=2
-  au! FileType javascriptreact set sw=2 sts=2
-  au! FileType json set sw=2 sts=2
-  au! FileType yaml set sw=2 sts=2
+augroup indentaition
+  au! FileType javascript setlocal sw=2 sts=2
+  au! FileType javascriptreact setlocal sw=2 sts=2
+  au! FileType json setlocal sw=2 sts=2
+  au! FileType yaml setlocal sw=2 sts=2
   au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
   au! FileType rescript setlocal sw=2 sts=2 signcolumn=yes
-  au! FileType html set sw=2 sts=2
-  au! FileType cpp set sw=4 sts=4
-  au! FileType tex set sw=2 sts=2 wrap
+  au! FileType html setlocal sw=2 sts=2
+  au! FileType cpp setlocal sw=4 sts=4
+  au! FileType tex setlocal sw=2 sts=2 wrap
 augroup end
 
 " ReScript custom
-augroup filetype
+augroup rescript
   au! FileType rescript nnoremap <silent> <buffer> g= :RescriptFormat<CR>
   au! FileType rescript nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
-  au! FileType rescript set omnifunc=rescript#Complete
 augroup end
 
 " ===========================================================================
@@ -243,15 +240,6 @@ nnoremap <m-=> <c-w>5+
 nnoremap <m--> <c-w>5-
 
 " -------------------------------------
-" Language
-" -------------------------------------
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> ]r :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> g= :call LanguageClient#textDocument_formatting()<CR>
-
-" -------------------------------------
 " Fuzzy find
 " -------------------------------------
 nnoremap <leader>ff :Files<CR>
@@ -274,6 +262,54 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 omap <silent> ib <Plug>CamelCaseMotion_ib
 xmap <silent> ib <Plug>CamelCaseMotion_ib
+
+" ===========================================================================
+" LSP
+" ===========================================================================
+lua << EOF
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+local lsp = require('lspconfig')
+
+-- Rescript
+lsp.rescriptls.setup {
+  cmd = {'node', os.getenv("HOME") .. '/.local/share/nvim/plugged/vim-rescript/server/out/server.js', '--stdio'},
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+EOF
 
 " ===========================================================================
 " Plugin settings
@@ -309,21 +345,6 @@ nmap <silent> <leader>nf :NERDTreeFind<CR>
 
 let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__', 'tags', '\.bs.js$']
 let NERDTreeMinimalUI=1
-
-" -------------------------------------
-" LanguageClient
-" -------------------------------------
-
-let g:LanguageClient_serverCommands = {
-    \ 'reason': ['reason-language-server'],
-    \ }
-
-let g:LanguageClient_rootMarkers = {
-    \ 'reason': ['bsconfig.json'],
-    \ }
-
-let g:LanguageClient_diagnosticsList = 'Location'
-let g:LanguageClient_useVirtualText = 'No'
 
 " -------------------------------------
 " AirLine
