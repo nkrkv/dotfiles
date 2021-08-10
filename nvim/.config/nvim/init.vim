@@ -152,12 +152,6 @@ augroup indentaition
   au! FileType tex setlocal sw=2 sts=2 wrap
 augroup end
 
-" ReScript custom
-augroup rescript
-  au! FileType rescript nnoremap <silent> <buffer> g= :RescriptFormat<CR>
-  au! FileType rescript nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
-augroup end
-
 " ===========================================================================
 " Shortcuts
 " ===========================================================================
