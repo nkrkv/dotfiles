@@ -93,6 +93,7 @@ Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
 Plug 'fholgado/minibufexpl.vim'
 Plug 'rakr/vim-one' " color scheme
 Plug 'rafamadriz/neon' " color scheme
+Plug 'sainnhe/sonokai' " color scheme
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -120,8 +121,9 @@ call plug#end()
 
 set background=dark
 set termguicolors
-let g:neon_style = "doom"
-colorscheme neon
+let g:sonokai_style = 'default'
+let g:sonokai_enable_italic = 1
+colorscheme sonokai
 
 " ===========================================================================
 " Filetypes
