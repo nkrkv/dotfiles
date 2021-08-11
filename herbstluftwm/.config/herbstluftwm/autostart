@@ -35,8 +35,6 @@ hc() {
     herbstclient "$@"
 }
 
-hc lock
-
 hc emit_hook reload
 hc keyunbind --all
 hc mouseunbind --all
