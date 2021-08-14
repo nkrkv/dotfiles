@@ -99,9 +99,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'jremmen/vim-ripgrep' " :Rg
 Plug 'moll/vim-bbye' " bdelete
 
+" Fuzzy stuff
 Plug '/usr/bin/fzf' " FZF relies on the global fzf tool installation
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+Plug 'hrsh7th/nvim-compe'
 
 " Distraction-free writing in Vim.
 Plug 'junegunn/goyo.vim'
@@ -370,6 +373,32 @@ let g:airline_section_z = '%P/%L  %3l:%-2c'
 " -------------------------------------
 
 let g:fzf_layout = { 'down': '~20%' }
+
+" -------------------------------------
+" Compe
+" -------------------------------------
+set completeopt=menuone,noselect
+
+lua << EOF
+require'compe'.setup({
+    enabled = true,
+    autocomplete = false, -- only explicit invokation
+    preselect = "always", -- select the first variant
+    source = {
+      path = true,
+      buffer = true,
+      nvim_lsp = true,
+    },
+  })
+EOF
+
+highlight link CompeDocumentation NormalFloat
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " -------------------------------------
 " Goyo
