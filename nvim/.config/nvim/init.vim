@@ -49,10 +49,6 @@ autocmd CompleteDone * pclose
 " Plugins
 " ===========================================================================
 
-" Be explicit about python binaries
-let g:python2_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
-
 " Automatically install vim-plug on the first run
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -82,10 +78,6 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rescript-lang/vim-rescript'
 Plug 'tpope/vim-liquid'
 Plug 'yuezk/vim-js' " JavaScript
-
-" Python
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
-Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 
 " Editing
 Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
@@ -339,14 +331,6 @@ EOF
 " ===========================================================================
 " Plugin settings
 " ===========================================================================
-
-" -------------------------------------
-" Python mode
-" -------------------------------------
-let g:pymode_python = 'python3'
-let g:pymode_rope = 1
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_options_max_line_length = 88 " match Black’s default
 
 " -------------------------------------
 " Minibuf explorer
