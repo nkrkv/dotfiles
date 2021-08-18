@@ -12,7 +12,6 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=8
 
-set splitbelow      " new windows (Preview in particular) appear on bottom
 set scrolloff=5     " keep at minimum few lines from top and bottom when scrolling
 set hidden          " allow moving around and leaving dirty files
 set linebreak       " break on word boundaries if word wrap enabled
@@ -40,10 +39,6 @@ if exists('g:GtkGuiLoaded')
   " Enable OpenType features
   call rpcnotify(1, 'Gui', 'FontFeatures', 'PURS, cv17')
 endif
-
-" Close preview window after omni-completion is done
-autocmd CompleteDone * pclose
-
 
 " ===========================================================================
 " Plugins
