@@ -88,12 +88,14 @@ Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
 
 " UI
 Plug 'fholgado/minibufexpl.vim'
-Plug 'rakr/vim-one' " color scheme
-Plug 'rafamadriz/neon' " color scheme
-Plug 'sainnhe/sonokai' " color scheme
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Colors
+Plug 'rakr/vim-one'
+Plug 'rafamadriz/neon'
+Plug 'sainnhe/sonokai'
 
 " Navigation
 Plug 'jremmen/vim-ripgrep' " :Rg
@@ -123,7 +125,7 @@ set background=dark
 set termguicolors
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic = 1
-colorscheme sonokai
+colorscheme tonokai
 
 " ===========================================================================
 " Filetypes
