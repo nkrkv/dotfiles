@@ -334,9 +334,9 @@ highlight! link TSBoolean Purple
 highlight! link TSCharacter Yellow
 highlight! link TSComment Comment
 highlight! link TSConditional Red
-highlight! link TSConstBuiltin PurpleItalic
-highlight! link TSConstMacro PurpleItalic
-highlight! link TSConstant PurpleItalic
+highlight! link TSConstBuiltin Orange
+highlight! link TSConstMacro Orange
+highlight! link TSConstant Orange
 highlight! link TSConstructor Green
 highlight! link TSException Red
 highlight! link TSField Green
@@ -361,12 +361,12 @@ highlight! link TSPunctBracket Grey
 highlight! link TSPunctDelimiter Grey
 highlight! link TSPunctSpecial Yellow
 highlight! link TSRepeat Red
-highlight! link TSString Purple
+highlight! link TSString PurpleItalic
 highlight! link TSStringEscape Red
 highlight! link TSStringRegex Red
 highlight! link TSStructure OrangeItalic
 highlight! link TSSymbol Fg
-highlight! link TSTag BlueItalic
+highlight! link TSTag Orange
 highlight! link TSTagDelimiter Red
 highlight! link TSText Green
 highlight! link TSStrike Grey
