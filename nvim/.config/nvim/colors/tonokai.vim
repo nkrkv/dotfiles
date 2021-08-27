@@ -330,7 +330,7 @@ call sonokai#highlight('TSWarning', s:palette.bg0, s:palette.yellow, 'bold')
 call sonokai#highlight('TSDanger', s:palette.bg0, s:palette.red, 'bold')
 highlight! link TSAnnotation Grey
 highlight! link TSAttribute BlueItalic
-highlight! link TSBoolean Purple
+highlight! link TSBoolean OrangeItalic
 highlight! link TSCharacter Yellow
 highlight! link TSComment Comment
 highlight! link TSConditional Red
@@ -340,7 +340,7 @@ highlight! link TSConstant Orange
 highlight! link TSConstructor Green
 highlight! link TSException Red
 highlight! link TSField Green
-highlight! link TSFloat Purple
+highlight! link TSFloat Orange
 highlight! link TSFuncBuiltin Green
 highlight! link TSFuncMacro Green
 highlight! link TSFunction Green
@@ -350,9 +350,9 @@ highlight! link TSKeywordFunction Red
 highlight! link TSKeywordOperator Red
 highlight! link TSLabel Red
 highlight! link TSMethod Green
-highlight! link TSNamespace BlueItalic
+highlight! link TSNamespace Purple
 highlight! link TSNone Fg
-highlight! link TSNumber Purple
+highlight! link TSNumber Orange
 highlight! link TSOperator Red
 highlight! link TSParameter Yellow
 highlight! link TSParameterReference Yellow
@@ -361,7 +361,7 @@ highlight! link TSPunctBracket Grey
 highlight! link TSPunctDelimiter Grey
 highlight! link TSPunctSpecial Yellow
 highlight! link TSRepeat Red
-highlight! link TSString PurpleItalic
+highlight! link TSString Blue
 highlight! link TSStringEscape Red
 highlight! link TSStringRegex Red
 highlight! link TSStructure OrangeItalic
@@ -371,8 +371,8 @@ highlight! link TSTagDelimiter Red
 highlight! link TSText Green
 highlight! link TSStrike Grey
 highlight! link TSMath Yellow
-highlight! link TSType Blue
-highlight! link TSTypeBuiltin Blue
+highlight! link TSType PurpleItalic
+highlight! link TSTypeBuiltin PurpleItalic
 highlight! link TSURI markdownUrl
 highlight! link TSVariable Fg
 highlight! link TSVariableBuiltin OrangeItalic
