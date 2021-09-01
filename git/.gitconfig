@@ -11,10 +11,10 @@
 [alias]
 	st = status
 	sw = switch
-	swm = switch master
 	co = checkout
 	ci = commit
 	ff = pull --ff-only
+	swm = !git show-ref --quiet refs/heads/main && git switch main || git switch master
 
 [push]
 	default = current
