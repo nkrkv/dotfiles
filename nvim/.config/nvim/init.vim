@@ -143,6 +143,7 @@ augroup ftmapping
   au! BufRead,BufNewFile *.less setfiletype less
   au! BufRead,BufNewFile *.svelte setfiletype html
   au! BufRead,BufNewFile *.pcss setfiletype css
+  au! BufRead,BufNewFile *.mdx setfiletype markdown
 augroup end
 
 " Custom settings for file types
