@@ -81,6 +81,11 @@ Plug 'junegunn/goyo.vim' " distraction-free writing
 Plug 'scrooloose/nerdcommenter' " comment blocks
 Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
 
+" Color schemes
+Plug 'rakr/vim-one'
+Plug 'rafamadriz/neon'
+Plug 'sainnhe/sonokai'
+
 " UI
 Plug 'fholgado/minibufexpl.vim'
 Plug 'scrooloose/nerdtree'
