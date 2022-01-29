@@ -58,21 +58,13 @@ Plug 'neovim/nvim-lspconfig'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Then install languages of choice, e.g:
-" :TSInstall javascript
+" Then install languages of choice, e.g :TSInstall javascript
+Plug 'nvim-treesitter/playground'
 
 " Language support
+Plug 'sheerun/vim-polyglot'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'chrisbra/csv.vim'
-Plug 'leafOfTree/vim-vue-plugin'
-Plug 'leafgarland/typescript-vim'
-Plug 'lervag/vimtex'
-Plug 'maxmellon/vim-jsx-pretty' " JSX
-Plug 'othree/html5.vim'
-Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rescript-lang/vim-rescript'
-Plug 'tpope/vim-liquid'
-Plug 'yuezk/vim-js' " JavaScript
 
 " Editing
 Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
@@ -264,7 +256,7 @@ xmap <silent> ib <Plug>CamelCaseMotion_ib
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = { "javascript" },
+  ensure_installed = { "javascript", "c" },
   highlight = {
     enable = true,
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -272,6 +264,9 @@ require'nvim-treesitter.configs'.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
+  },
+  playground = {
+    enable = true,
   },
 }
 EOF
