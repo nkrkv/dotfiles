@@ -58,19 +58,20 @@ Plug 'neovim/nvim-lspconfig'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Then install languages of choice, e.g :TSInstall javascript
 Plug 'nvim-treesitter/playground'
 
 " Language support
-Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'rescript-lang/vim-rescript'
+Plug 'sheerun/vim-polyglot'
 
 " Editing
 Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
 Plug 'bkad/CamelCaseMotion' " camelAndSnake_case_Motions
 Plug 'junegunn/goyo.vim' " distraction-free writing
 Plug 'scrooloose/nerdcommenter' " comment blocks
+Plug 'tpope/vim-abolish' " %Subvert
 Plug 'tpope/vim-surround' " surrounding quotes, braces, etc
 
 " Color schemes
