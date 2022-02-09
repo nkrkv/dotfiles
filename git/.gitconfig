@@ -25,6 +25,7 @@
 
 [cola]
 	spellcheck = false
+	startupmode = folder
 
 [rebase]
 	autosquash = true

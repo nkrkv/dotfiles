@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 COMPOSITOR=picom
-LAUNCHER="rofi -show drun -modi drun -show-icons"
-WINDOW_FIND="rofi -show window -modi window -show-icons"
+LAUNCHER="rofi -dpi 1 -show drun -modi drun -show-icons"
+WINDOW_FIND="rofi -dpi 1 -show window -modi window -show-icons"
 LOCK_SCREEN=$(dirname "$0")/lock
 BROWSER=firefox
 FILES=nemo
 TERMINAL=xfce4-terminal
-CALCULATOR="rofi -show calc -modi calc -no-show-match -no-sort"
+CALCULATOR="rofi -dpi 1 -show calc -modi calc -no-show-match -no-sort"
 
 COLOR_ACTIVE='#9fbc00'
 COLOR_NORMAL='#565656'

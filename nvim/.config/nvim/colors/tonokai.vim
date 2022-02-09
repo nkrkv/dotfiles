@@ -829,22 +829,22 @@ highlight! link diffIndexLine Purple
 " }}}
 " Generate the `after/ftplugin` directory based on the comment tags in this file.
 " For example, the content between `ft_begin: sh/zsh` and `ft_end` will be placed in `after/ftplugin/sh/sonokai.vim` and `after/ftplugin/zsh/sonokai.vim`.
-if sonokai#ft_exists(s:path) " If the ftplugin exists.
-  if s:configuration.better_performance
-    if !sonokai#ft_newest(s:path, s:last_modified) " Regenerate if it's not up to date.
-      call sonokai#ft_clean(s:path, 0)
-      call sonokai#ft_gen(s:path, s:last_modified, 'update')
-    endif
-    finish
-  else
-    call sonokai#ft_clean(s:path, 1)
-  endif
-else
-  if s:configuration.better_performance
-    call sonokai#ft_gen(s:path, s:last_modified, 'generate')
-    finish
-  endif
-endif
+"if sonokai#ft_exists(s:path) " If the ftplugin exists.
+"  if s:configuration.better_performance
+"    if !sonokai#ft_newest(s:path, s:last_modified) " Regenerate if it's not up to date.
+"      call sonokai#ft_clean(s:path, 0)
+"      call sonokai#ft_gen(s:path, s:last_modified, 'update')
+"    endif
+"    finish
+"  else
+"    call sonokai#ft_clean(s:path, 1)
+"  endif
+"else
+"  if s:configuration.better_performance
+"    call sonokai#ft_gen(s:path, s:last_modified, 'generate')
+"    finish
+"  endif
+"endif
 " ft_begin: vim-plug {{{
 " https://github.com/junegunn/vim-plug
 call sonokai#highlight('plug1', s:palette.red, s:palette.none, 'bold')
