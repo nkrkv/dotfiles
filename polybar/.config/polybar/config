@@ -98,12 +98,6 @@ format-connected-prefix-foreground = ${colors.foreground-alt}
 format-connected = <label-connected>
 label-connected = "%signal%% %downspeed:9%↓ %upspeed:9%↑"
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
 ramp-signal-0 = "[    ]"
 ramp-signal-1 = "[|   ]"
 ramp-signal-2 = "[||  ]"
@@ -121,22 +115,11 @@ format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 5
-
 date = %a, %d %b %Y
 time = %H:%M
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-
 label = %date% | %time%
 
 [module/alsa]
