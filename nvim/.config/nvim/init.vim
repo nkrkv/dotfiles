@@ -58,7 +58,9 @@ Plug 'neovim/nvim-lspconfig'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
+"Plug 'nkrkv/nvim-treesitter-rescript'
 
 " Language support
 Plug 'lervag/vimtex'
@@ -275,6 +277,66 @@ require'nvim-treesitter.configs'.setup {
   playground = {
     enable = true,
   },
+}
+EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+
+      -- Mnemonic decoding
+      -- a/i  = around/inner
+      -- l    = language
+      -- f    = function
+      -- m    = method
+      -- c    = class
+      -- b    = block
+      keymaps = {
+        ["alf"] = "@function.outer",
+        ["ilf"] = "@function.inner",
+        ["alm"] = "@function.outer",
+        ["ilm"] = "@function.inner",
+        ["alc"] = "@class.outer",
+        ["ilc"] = "@class.inner",
+        ["alb"] = "@block.outer",
+        ["ilb"] = "@block.inner",
+      },
+    },
+
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+  },
+}
+EOF
+
+lua <<EOF
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.rescript = {
+  install_info = {
+    url = "~/devel/playground/tree-sitter-rescript", -- local path or git repo
+    files = {"src/parser.c", "src/scanner.c"},
+  }
 }
 EOF
 
