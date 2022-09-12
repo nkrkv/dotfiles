@@ -294,6 +294,9 @@ require'nvim-treesitter.configs'.setup {
       -- m    = method
       -- c    = class
       -- b    = block
+      -- a    = argument
+      -- p    = parameter
+      -- ( )  = call
       keymaps = {
         ["alf"] = "@function.outer",
         ["ilf"] = "@function.inner",
@@ -303,6 +306,14 @@ require'nvim-treesitter.configs'.setup {
         ["ilc"] = "@class.inner",
         ["alb"] = "@block.outer",
         ["ilb"] = "@block.inner",
+        ["ala"] = "@parameter.outer",
+        ["ila"] = "@parameter.inner",
+        ["alp"] = "@parameter.outer",
+        ["ilp"] = "@parameter.inner",
+        ["al)"] = "@call.outer",
+        ["il)"] = "@call.inner",
+        ["al("] = "@call.outer",
+        ["il("] = "@call.inner",
       },
     },
 
