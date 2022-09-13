@@ -87,11 +87,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Colors
-Plug 'rakr/vim-one'
-Plug 'rafamadriz/neon'
-Plug 'sainnhe/sonokai'
-
 " Navigation
 Plug 'jremmen/vim-ripgrep' " :Rg
 Plug 'moll/vim-bbye' " bdelete
@@ -114,9 +109,68 @@ call plug#end()
 
 set background=dark
 set termguicolors
+
+" Sonokai theme customization
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic = 1
-colorscheme tonokai
+
+function! s:sonokai_custom() abort
+  highlight! link TSAnnotation Grey
+  highlight! link TSAttribute GreenItalic
+  highlight! link TSBoolean OrangeItalic
+  highlight! link TSCharacter Yellow
+  highlight! link TSComment Comment
+  highlight! link TSConditional Red
+  highlight! link TSConstBuiltin Orange
+  highlight! link TSConstMacro Orange
+  highlight! link TSConstant Orange
+  highlight! link TSConstructor Green
+  highlight! link TSException Red
+  highlight! link TSField Green
+  highlight! link TSFloat Orange
+  highlight! link TSFuncBuiltin Green
+  highlight! link TSFuncMacro Green
+  highlight! link TSFunction Green
+  highlight! link TSInclude Red
+  highlight! link TSKeyword Red
+  highlight! link TSKeywordFunction Red
+  highlight! link TSKeywordOperator Red
+  highlight! link TSLabel Red
+  highlight! link TSMethod Green
+  highlight! link TSNamespace Purple
+  highlight! link TSNone Fg
+  highlight! link TSNumber Orange
+  highlight! link TSOperator Red
+  highlight! link TSParameter Yellow
+  highlight! link TSParameterReference Yellow
+  highlight! link TSProperty Green
+  highlight! link TSPunctBracket Grey
+  highlight! link TSPunctDelimiter Grey
+  highlight! link TSPunctSpecial Yellow
+  highlight! link TSRepeat Red
+  highlight! link TSString Blue
+  highlight! link TSStringEscape Red
+  highlight! link TSStringRegex Red
+  highlight! link TSStructure OrangeItalic
+  highlight! link TSSymbol Fg
+  highlight! link TSTag Purple
+  highlight! link TSTagDelimiter Red
+  highlight! link TSText Green
+  highlight! link TSStrike Grey
+  highlight! link TSMath Yellow
+  highlight! link TSType PurpleItalic
+  highlight! link TSTypeBuiltin PurpleItalic
+  highlight! link TSURI markdownUrl
+  highlight! link TSVariable Fg
+  highlight! link TSVariableBuiltin OrangeItalic
+endfunction
+
+augroup SonokaiCustom
+  autocmd!
+  autocmd ColorScheme sonokai call s:sonokai_custom()
+augroup END
+
+colorscheme sonokai
 
 " ===========================================================================
 " Filetypes
