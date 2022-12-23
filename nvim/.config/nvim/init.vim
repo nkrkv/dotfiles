@@ -194,6 +194,8 @@ augroup end
 augroup indentaition
   au! FileType javascript setlocal sw=2 sts=2
   au! FileType javascriptreact setlocal sw=2 sts=2
+  au! FileType typescript setlocal sw=2 sts=2 signcolumn=yes
+  au! FileType typescriptreact setlocal sw=2 sts=2 signcolumn=yes
   au! FileType json setlocal sw=2 sts=2
   au! FileType yaml setlocal sw=2 sts=2
   au! FileType reason setlocal sw=2 sts=2 signcolumn=yes
@@ -431,7 +433,7 @@ end
 
 local lsp = require('lspconfig')
 
--- Rescript
+-- ReScript
 lsp.rescriptls.setup {
   cmd = {'node', os.getenv("HOME") .. '/.local/share/nvim/plugged/vim-rescript/server/out/server.js', '--stdio'},
   on_attach = on_attach,
@@ -439,6 +441,15 @@ lsp.rescriptls.setup {
     debounce_text_changes = 150,
   }
 }
+
+-- TypeScript
+lsp.tsserver.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+
 EOF
 
 " ===========================================================================
