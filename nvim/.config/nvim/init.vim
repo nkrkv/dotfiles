@@ -192,8 +192,8 @@ augroup end
 
 " Custom settings for file types
 augroup indentaition
-  au! FileType javascript setlocal sw=2 sts=2
-  au! FileType javascriptreact setlocal sw=2 sts=2
+  au! FileType javascript setlocal sw=2 sts=2 signcolumn=yes
+  au! FileType javascriptreact setlocal sw=2 sts=2 signcolumn=yes
   au! FileType typescript setlocal sw=2 sts=2 signcolumn=yes
   au! FileType typescriptreact setlocal sw=2 sts=2 signcolumn=yes
   au! FileType json setlocal sw=2 sts=2
