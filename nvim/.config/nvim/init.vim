@@ -107,11 +107,14 @@ call plug#end()
 set background=dark
 set termguicolors
 
+"
 " Sonokai theme customization
+"
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic = 1
 
 function! s:sonokai_custom() abort
+  " Tree-sitter overrides
   highlight! link TSAnnotation Grey
   highlight! link TSAttribute GreenItalic
   highlight! link TSBoolean OrangeItalic
@@ -160,6 +163,9 @@ function! s:sonokai_custom() abort
   highlight! link TSURI markdownUrl
   highlight! link TSVariable Fg
   highlight! link TSVariableBuiltin OrangeItalic
+
+  " Cmp autocompletion overrides
+  highlight! link CmpItemKindText Grey
 endfunction
 
 augroup SonokaiCustom
@@ -490,6 +496,11 @@ lua <<EOF
     formatting = {
       -- No tilde ~ if autocompletion is expandable (a mini-template)
       expandable_indicator = false,
+      -- Surround kind in autocompletion popup with parens
+      format = function(entry, vim_item)
+        vim_item.kind = "   (" .. vim_item.kind .. ")"
+        return vim_item
+      end,
     },
     mapping = cmp.mapping.preset.insert({
       -- Do not hijack native Ctrl+P/N, allow Cmp only use them for selecting items
