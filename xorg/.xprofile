@@ -5,7 +5,12 @@ xset -b
 # * Caps Lock to switch layouts (grp:caps_toggle)
 # * Enable extra typographic characters ¥§€ (misc:typo)
 # * Use right alt to type the extra typographic chars (lv3:ralt_switch)
-setxkbmap -layout us,ru -option "grp:caps_toggle,lv3:ralt_switch,misc:typo"
+# * Use right win as the compose key:
+#     Win, ", a = ä
+#     Win, ", o = ö
+#     Win, ", u = ü
+#     Win, s, s = ß
+setxkbmap -layout us,ru -option "grp:caps_toggle,lv3:ralt_switch,misc:typo,compose:rwin"
 
 # Make numpad DEL print a dot instead of comma for RU layout.
 # Made as hack because the `kpdl` option is only applied to the first layout.
