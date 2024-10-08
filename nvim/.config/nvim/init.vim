@@ -409,7 +409,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-    
+
     local kopts = { silent = true, buffer = args.buf }
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, kopts)
     vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ float = true }) end, kopts)
@@ -482,16 +482,27 @@ lua <<EOF
 
   cmp.setup({
     completion = {
+      -- No distractions as I type
       autocomplete = false,
+      -- Override defaults to always select the first item
+      completeopt = 'menu,menuone,popup',
+    },
+    formatting = {
+      -- No tilde ~ if autocompletion is expandable (a mini-template)
+      expandable_indicator = false,
     },
     mapping = cmp.mapping.preset.insert({
-      -- Do not hijack native Ctrl+P/N
-      ['<C-n>'] = cmp.config.disable,
-      ['<C-p>'] = cmp.config.disable,
+      -- Do not hijack native Ctrl+P/N, allow Cmp only use them for selecting items
+      -- while its popup is visible
+      ['<C-n>'] = function(fallback)
+        if cmp.visible() then cmp.select_next_item({ behavior = cmp.SelectBehavior.Select }) else fallback() end
+      end,
+      ['<C-p>'] = function(fallback)
+        if cmp.visible() then cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select }) else fallback() end
+      end,
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
