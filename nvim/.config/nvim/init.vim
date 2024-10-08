@@ -480,10 +480,10 @@ let NERDTreeMinimalUI=1
 " AirLine
 " -------------------------------------
 
-let g:airline_theme='one'
+let g:airline_theme='deus'
 let g:airline#extensions#keymap#enabled = '0'
 let g:airline_powerline_fonts = 1
-" Minimalistic leftmost section: 45%/623  223:46
+" Minimalistic rightmost section: 45%/623  223:46
 let g:airline_section_z = '%P/%L  %3l:%-2c'
 
 " -------------------------------------
