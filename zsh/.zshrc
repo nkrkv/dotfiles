@@ -47,7 +47,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
 export NVM_LAZY_LOAD=true
-export NVM_AUTO_USE=true
+#export NVM_AUTO_USE=true
 antigen bundle lukechilds/zsh-nvm
 
 antigen bundle davidparsson/zsh-pyenv-lazy
