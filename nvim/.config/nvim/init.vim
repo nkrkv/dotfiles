@@ -64,7 +64,9 @@ Plug 'nvim-treesitter/playground'
 
 " Language support
 Plug 'rescript-lang/vim-rescript'
+Plug 'thalesmello/lkml.vim' " Looker ML
 Plug 'sheerun/vim-polyglot'
+Plug 'prisma/vim-prisma'
 
 " Editing
 Plug 'AndrewRadev/sideways.vim' " swap arguments, arg object
