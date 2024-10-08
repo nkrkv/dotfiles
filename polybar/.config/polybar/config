@@ -135,6 +135,8 @@ format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = mute
 
+click-right = pavucontrol
+
 [module/battery]
 type = internal/battery
 battery = BAT0
