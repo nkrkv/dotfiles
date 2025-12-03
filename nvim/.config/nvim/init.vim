@@ -416,6 +416,43 @@ lua << EOF
 require("mason").setup()
 local lsp = require('lspconfig')
 
+local function rename_file()
+  local source_file, target_file
+
+  vim.ui.input({
+    prompt = "Source: ",
+    completion = "file",
+    default = vim.api.nvim_buf_get_name(0)
+  },
+    function(input)
+      source_file = input
+    end
+  )
+  vim.ui.input({
+    prompt = "Target: ",
+    completion = "file",
+    default = source_file
+  },
+    function(input)
+      target_file = input
+    end
+  )
+
+  local params = {
+    command = "_typescript.applyRenameFile",
+    arguments = {
+      {
+        sourceUri = source_file,
+        targetUri = target_file,
+      },
+    },
+    title = ""
+  }
+
+  vim.lsp.util.rename(source_file, target_file)
+  vim.lsp.buf.execute_command(params)
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     -- Enable completion triggered by <c-x><c-o>
@@ -423,6 +460,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     local kopts = { silent = true, buffer = args.buf }
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, kopts)
+    vim.keymap.set('n', '<space>R', rename_file)
     vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ float = true }) end, kopts)
     vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev({ float = true }) end, kopts)
   end,
@@ -437,10 +475,16 @@ lsp.rescriptls.setup {
 }
 
 -- TypeScript
-lsp.tsserver.setup {
+lsp.ts_ls.setup {
   flags = {
     debounce_text_changes = 150,
-  }
+  },
+  commands = {
+    RenameFile = {
+      rename_file,
+      description = "Rename File"
+    },
+  },
 }
 
 EOF
@@ -529,7 +573,7 @@ lua <<EOF
 
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  require('lspconfig')['tsserver'].setup {
+  require('lspconfig')['ts_ls'].setup {
     capabilities = capabilities
   }
 
