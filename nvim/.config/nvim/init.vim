@@ -61,7 +61,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
-"Plug 'nkrkv/nvim-treesitter-rescript'
+Plug 'rescript-lang/tree-sitter-rescript'
 
 " Language support
 Plug 'rescript-lang/vim-rescript'
@@ -199,6 +199,8 @@ augroup ftmapping
   au! BufRead,BufNewFile *.svelte setfiletype html
   au! BufRead,BufNewFile *.pcss setfiletype css
   au! BufRead,BufNewFile *.mdx setfiletype markdown
+  au! BufRead,BufNewFile *.res setfiletype rescript
+  au! BufRead,BufNewFile *.rei setfiletype rescript
 augroup end
 
 " Custom settings for file types
@@ -462,7 +464,7 @@ let g:miniBufExplModSelTarget = 1
 nmap <silent> <leader>nn :NERDTreeToggle <BAR> :MBEOpen!<CR>
 nmap <silent> <leader>nf :NERDTreeFind<CR>
 
-let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__', 'tags', '\.bs.js$']
+let NERDTreeIgnore=['\~$', '\.orig$', '\.pyc$', '\.pyo$', '\.o$', '__pycache__', '^tags$', '\.bs\.js$', '\.res\.mjs$']
 let NERDTreeMinimalUI=1
 
 " -------------------------------------
@@ -529,5 +531,8 @@ lua <<EOF
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
+  }
+
+  require('lspconfig')['rescriptls'].setup {
   }
 EOF
