@@ -36,6 +36,9 @@ highlight lCursor guifg=NONE guibg=Cyan " подсветка курсора пр
 set autoread
 autocmd FocusGained * :checktime
 
+" Use vim-polyglot plugins, but not ftdetect autocommands
+let g:polyglot_disabled = ['ftdetect']
+
 " ===========================================================================
 " Plugins
 " ===========================================================================
