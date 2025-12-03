@@ -25,6 +25,8 @@ $COMPOSITOR &
 pkill -u $USER --full hlwm_perclient_kb_layout
 $(dirname "$0")/hlwm_perclient_kb_layout &
 
+~/bin/fixkb
+
 # Herbstluft WM
 
 # kill dangling clients (e.g., for the panel)
