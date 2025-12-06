@@ -414,7 +414,7 @@ EOF
 lua << EOF
 
 require("mason").setup()
-local lsp = require('lspconfig')
+require("mason-lspconfig").setup()
 
 local function rename_file()
   local source_file, target_file
@@ -467,15 +467,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- ReScript
-lsp.rescriptls.setup {
-  cmd = {'node', os.getenv("HOME") .. '/.local/share/nvim/plugged/vim-rescript/server/out/server.js', '--stdio'},
+vim.lsp.config('rescriptls', {
   flags = {
     debounce_text_changes = 150,
   }
-}
+})
 
 -- TypeScript
-lsp.ts_ls.setup {
+vim.lsp.config('ts_ls', {
   flags = {
     debounce_text_changes = 150,
   },
@@ -485,7 +484,7 @@ lsp.ts_ls.setup {
       description = "Rename File"
     },
   },
-}
+})
 
 EOF
 
@@ -573,10 +572,11 @@ lua <<EOF
 
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  require('lspconfig')['ts_ls'].setup {
+  vim.lsp.config('ts_ls', {
     capabilities = capabilities
-  }
+  })
 
-  require('lspconfig')['rescriptls'].setup {
-  }
+  vim.lsp.config('rescriptls', {
+    capabilities = capabilities
+  })
 EOF
